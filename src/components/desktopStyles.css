@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'W95FA';
+    src: local('W95FA'), url(./fonts/W95FA.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'alarm';
+    src: local('alarm clock'), url(./fonts/alarm\ clock.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'pixel';
+    src: local('dogicapixel'), url(./fonts/dogicapixel.ttf) format('truetype');
+}
+
+p, h1, h2, h3, h4, h5, a {
+    color: white;
+    font-family: W95FA;
+}
+
+.app-icon {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    cursor: pointer;
+}
+
+.app-icon:hover {
+    border: 1px dashed white;
+}
+
+.top-button {
+    float: right; 
+    height: 20px; 
+    border: groove 2px; 
+    margin: 0 1px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.progress-bar[value] {
+    -webkit-appearance: none;
+    appearance: none;
+  
+    width: 250px;
+    height: 20px;
+}
+
+.progress-bar[value]::-webkit-progress-bar {
+    background-color: #C0C7C8;
+    border: inset 2px;
+    
+}
+
+.progress-bar[value]::-webkit-progress-value {
+    background-color: blue;
+}
+
+.slider[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 200px;
+    height: 20px;
+    background-color: #C0C7C8;
+    border: none;
+    outline: none;
+}
+
+.slider[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: inset 2px;
+    cursor: pointer;
+    background-image: url('/public/images/pause.png');
+    background-size: 8px;
+}
+
+.slider[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: blue;
+    border: 2px solid blue;
+    cursor: pointer;
+}
+
+.slider[type="range"]::-webkit-slider-thumb:hover {
+    border: 2px solid white;
+}
+
+.channelf-forum-container:nth-child(odd) {
+    background-color: rgba(200, 200, 200, 0.2);
+}
+
+.channelf-forum {
+    display: flex; 
+    border: inset 1px; 
+    color: white; 
+    align-items: center; 
+    gap: 20px;
+    text-align: left;
+}
+
+.channelf-italic {
+    opacity: 0.7; 
+    margin-left: 5px;
+}
+
+.channelf-bold {
+    color: lightblue;
+    opacity: 0.7;
+}
