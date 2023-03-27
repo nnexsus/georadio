@@ -22,7 +22,7 @@ p, h1, h2, h3, h4, h5, a {
     display: flex; 
     flex-direction: column; 
     align-items: center;
-    cursor: pointer;
+    cursor: url('../../public/images/cursor/pointer.cur'), auto;
 }
 
 .app-icon:hover {
@@ -34,7 +34,7 @@ p, h1, h2, h3, h4, h5, a {
     height: 20px; 
     border: groove 2px; 
     margin: 0 1px;
-    cursor: pointer;
+    cursor: url('../../public/images/cursor/pointer.cur'), auto;
 }
 
 .hidden {
@@ -75,7 +75,7 @@ p, h1, h2, h3, h4, h5, a {
     width: 20px;
     height: 20px;
     border: inset 2px;
-    cursor: pointer;
+    cursor: url('../../public/images/cursor/pointer.cur'), auto;
     background-image: url('/public/images/pause.png');
     background-size: 8px;
 }
@@ -87,7 +87,7 @@ p, h1, h2, h3, h4, h5, a {
     height: 16px;
     background: blue;
     border: 2px solid blue;
-    cursor: pointer;
+    cursor: url('../../public/images/cursor/pointer.cur'), auto;
 }
 
 .slider[type="range"]::-webkit-slider-thumb:hover {
@@ -115,4 +115,87 @@ p, h1, h2, h3, h4, h5, a {
 .channelf-bold {
     color: lightblue;
     opacity: 0.7;
+}
+
+.app-drawer {
+    background-color: #C0C7C8; 
+    display: flex; 
+    align-items: center; 
+    height: 25px; 
+    gap: 10px;
+    cursor: url('../../public/images/cursor/pointer.cur'), auto;
+}
+
+.app-open {
+    border: outset 3px; 
+}
+
+.app-closed {
+    border: inset 3px;
+}
+
+.app-open h2 {
+    display: none;
+}
+
+.app-closed img {
+    margin-left: 5px;
+}
+
+
+.m:hover {
+    background-color: gray;
+}
+
+.top-button:hover {
+    border: inset 2px;
+}
+
+
+.hidestart {
+    display: none;
+}
+
+.start {
+    border: groove 3px;
+    color: black;
+    width: 140px;
+    margin: 0;
+    padding: 0;
+    background-color: lightgray;
+    cursor: url('../../public/images/cursor/pointer.cur'), auto;
+}
+
+.start:hover {
+    background-color: darkgray;
+}
+
+.button-on-bar {
+    border: outset 2px; 
+    width: 25px; 
+    height: 25px; 
+    padding: 0;
+    background-color: lightgray;
+    border-right-color: black;
+    border-bottom-color: black;
+    border-top-color: #FFF8FF;
+    border-left-color: #FFF8FF;
+    outline: 1px black solid;
+    image-rendering: pixelated;
+}
+
+.button-on-bar:hover {
+    filter: brightness(1.1);
+}
+
+.inboxblack p, .inboxblack h3, .inboxblack div {
+    color: black;
+}
+
+.mailopen {
+    background-color: blue;
+}
+
+.mailopen p, .mailopen h3, .mailopen div {
+    color: white;
 }

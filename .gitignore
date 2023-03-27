@@ -22,11 +22,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+georadio.zip
+radiopixelv1-1.aseprite
+
 #no peeking
 /src/components/sites/ventsite.js
 /src/components/sites/closetnet.js
 /src/components/sites/foreverfriend.js
 /src/components/sitechanger.js
-/src/components/sites/hidden/
+/src/components/sites/help/
 /src/components/sites/blogs/
+/src/components/sites/hidden/
+
 /public/images/18site
+/public/images/kantoonline/

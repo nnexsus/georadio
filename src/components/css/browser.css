@@ -1,0 +1,59 @@
+
+.X:hover {
+    background-color: red;
+}
+
+.m:hover {
+    background-color: gray;
+}
+
+.top-button:hover {
+    border: inset 2px;
+}
+
+.hidemenu, .radio-hidemenu {
+    display: none;
+}
+
+.button-on-bar {
+    cursor: url('../../../public/images/cursor/arrow.cur'), auto;
+}
+
+.files, .edits, .views, .favorites, .helps, .favs, .radio-files, .radio-options, .radio-helps {
+    border: outset 2px;
+    padding: 0;
+    background-color: lightgray;
+    border-right-color: black;
+    border-bottom-color: black;
+    border-top-color: #FFF8FF;
+    border-left-color: #FFF8FF;
+    outline: 1px black solid;
+    image-rendering: pixelated;
+    cursor: url('../../../public/images/cursor/arrow.cur'), auto;
+}
+
+.files:hover, .edits:hover, .views:hover, .favorites:hover, .helps:hover, .favs:hover, .radio-files:hover, .radio-options:hover, .radio-helps:hover {
+    filter: brightness(1.1);
+}
+
+.file, .edit, .view, .favorite, .help, .fav, .radio-file, .radio-option, .radio-help {
+    border: groove 2px;
+    color: black;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: lightgray;
+    cursor: url('../../../public/images/cursor/pointer.cur'), auto;
+}
+
+.files .file, .edits .edit, .views .view, .favorites .favorite, .helps .help, .radio-files .radio-file, .radio-options .radio-option, .radio-helps .radio-help {
+    display: none;
+}
+
+.files:hover .file, .edits:hover .edit, .views:hover .view, .favorites:hover .favorite, .helps:hover .help, .radio-files:hover .radio-file, .radio-options:hover .radio-option, .radio-helps:hover .radio-help {
+    display: block;
+}
+
+.file:hover, .edit:hover, .view:hover, .favorite:hover, .help:hover, .radio-file:hover, .radio-option:hover, .radio-help:hover {
+    background-color: darkgray;
+}

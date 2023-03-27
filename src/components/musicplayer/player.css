@@ -1,0 +1,26 @@
+
+.player-button {
+    display: flex; 
+    align-items: center; 
+    border: outset 3px; 
+    background-image: url('../../../public/images/button.png'); 
+    background-size: contain; 
+    cursor: url('../../..//public/images/cursor/pointer.cur'), auto;
+}
+
+.indent {
+    border: inset 3px;
+    filter: brightness(0.6);
+}
+
+.player-open {
+    display: 'grid';
+}
+
+.audio-closed {
+    display: none;
+}
+
+.audio-open {
+    display: flex;
+}

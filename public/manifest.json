@@ -1,6 +1,6 @@
 {
-  "short_name": "GeoMusic",
-  "name": "GeoMusic Online Radio",
+  "short_name": "GeoRadio",
+  "name": "GeoRadio Online Music",
   "icons": [
     {
       "src": "radiopixel.png",
@@ -10,12 +10,12 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "150x150"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "450x450"
     }
   ],
   "start_url": ".",

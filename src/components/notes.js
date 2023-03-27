@@ -3,7 +3,6 @@ import { Rnd } from 'react-rnd';
 import { LinkContext } from './context';
 
 const Notes = () => {
-    const [addBar, setAddBar] = useState('http://www.geomusic.net/');
     const [state, dispatch] = useContext(LinkContext);
     const [note, setNote] = useState( `
 cool sites i found!!
@@ -17,7 +16,7 @@ Note to self: remember the www. and ending /
 *these notes save on change*`)
 
     const onClick = () => {
-        dispatch({type: 'update_app', browser: state.browser, notes: !state.notes})
+        dispatch({type: 'update_app', browser: state.browser, notes: !state.notes, inbox: state.inbox})
     }
 
     const saveNote = (val) => {
@@ -47,7 +46,7 @@ Note to self: remember the www. and ending /
             style={{backgroundColor: "#C0C7C8", border: "groove 2px"}}>
                 <div className='top-bar' style={{width: '100%', height: '25px', display: 'flex', backgroundColor: 'darkblue', alignItems: 'center', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
-                        <img style={{marginLeft: '5px'}} width="22px" height="22px" src='/images/Earth (16 colors).ico'/>
+                        <img alt='decor' style={{marginLeft: '5px'}} width="22px" height="22px" src='/images/Earth (16 colors).ico'/>
                         <h4 className='title' style={{marginLeft: '2px'}}>Notes</h4>
                     </div>
                     <div className='buttons content' style={{marginRight: '1px'}}>

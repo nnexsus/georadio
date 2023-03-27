@@ -35,7 +35,7 @@ const ChannelFForum = () => {
                                 <li className="channelf-forum"><i className="channelf-italic">KBRULTRAFAN973- </i><p><b className='channelf-bold'>user1105</b> -> THANK YOU!!</p></li>
                                 <li className="channelf-forum"><i className="channelf-italic">nnightwolff- </i><p>Rav's lyric game is simply undefeated. How can one <i>not</i> be blown away by <i>Channel F</i>?</p></li>
                                 <li className="channelf-forum"><i className="channelf-italic">KBRULTRAFAN973- </i><p><b className='channelf-bold'>nnightwolff</b> -> YES!! ITS MY FAVORITE SONG!! LETS BE FRIENDS, YES?</p></li>
-                                <li className="channelf-forum"><i className="channelf-italic">nnightwolff- </i><p><b className='channelf-bold'>KBRULTRAFAN973</b> -> Yes, of course! haha! Check out my page! My information can be found on it. <a style={{cursor: 'pointer'}} onClick={() => clickLink('http://nnightwolff.blog/')}>http://nnightwolff.blog/</a></p></li>
+                                <li className="channelf-forum"><i className="channelf-italic">nnightwolff- </i><p><b className='channelf-bold'>KBRULTRAFAN973</b> -> Yes, of course! haha! Check out my page! My information can be found on it. <b style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://nnightwolff.blog/')}>http://nnightwolff.blog/</b></p></li>
                             </ul>
                         </div>
                     </div>

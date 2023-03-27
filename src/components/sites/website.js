@@ -34,19 +34,17 @@ const Website = () => {
                 <h2 style={{color: 'rgb(255, 204, 102)', fontFamily: 'serif', textAlign: 'center'}}>About GeoMusic</h2>
                 <hr style={{width: '80%', height: '1px'}}/>
                 <div style={{display: 'flex', textAlign: 'right'}}>
-                    <img alt='decor' src='/images/musica_baile21.gif' width={'150px'} height={'150px'} style={{imageRendering: "pixelated"}}/>
-                    <p style={{color: 'rgb(51, 255, 204)', fontFamily: 'serif', margin: '0 20px'}}>GeoMusic is a simple webapp that streams a 24/7 breakcore & dnb radio to your browser! 
+                    <p style={{color: 'rgb(51, 255, 204)', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '0 20px'}}>Welcome to GeoMusic!! 
                     <br/>
                     <br/>Come hang out and listen to some music with other online listeners!
                     <br/>
-                    <br/>GeoMusic is designed to bypass livestreaming through youtube, as to not eat up upload bandwith. Instead, the songs are hosted on a remote server, and only sent to the client when playing.</p>
+                    <br/>GeoMusic is a breakcore, dnb, and related mix, you can view the playlist below!!</p>
+                    <img alt='decor' src='/images/musica_baile21.gif' width={'120px'} height={'120px'} style={{float: 'right', imageRendering: "pixelated"}}/>
                 </div>
                 <h4 style={{color: 'rgb(255, 204, 102)', fontFamily: 'serif', textAlign: 'center'}}>Playlist</h4>
                 <hr style={{width: '80%', height: '1px'}}/>
                 <div style={{display: 'flex'}}>
-                    <p style={{color: 'rgb(51, 255, 204)', fontFamily: 'serif', margin: '0 20px', textAlign: 'left'}}>The full playlist JSON can be download here: <a>Playlist JSON</a>
-                    <br/>
-                    <br/><b>Any songs will be taken off with request.</b> To find a song by name, simply CTRL + F on the JSON and search.</p>
+                    <p style={{color: 'rgb(51, 255, 204)', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '10px 20px', textAlign: 'left'}}>The playlist can be found here: <a href="https://www.youtube.com/playlist?list=PLzhN8a1aNzMyx2Wfi9eh0ah5UawYN5KTd">Playlist</a></p>
                     <img alt='decor' src='/images/music (1).gif' width={'120px'} height={'120px'} style={{imageRendering: "pixelated"}}/>
                 </div>
                 <img alt='decor' src='/images/music2.gif' height={'150px'} style={{imageRendering: "pixelated", margin: '50px 0 0 25%'}}/>

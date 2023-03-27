@@ -3,6 +3,9 @@ import { useState, useEffect, useRef, useContext } from 'react';
 
 import { LinkContext } from './../context';
 
+import './player.css';
+import { saveAs } from 'file-saver';
+
 const MusicPlayer = () => {
 
     const [state, dispatch] = useContext(LinkContext);
@@ -16,7 +19,7 @@ const MusicPlayer = () => {
             length: 'a',
             link: 'a',
             imgLink: 'a',
-            id: 'a'
+            id: 'run'
         }
     })
 
@@ -27,6 +30,29 @@ const MusicPlayer = () => {
         muted: false,
         currentID: 1
     })
+
+    const [songNext, setSongNext] = useState({
+        currentSong: 'a',
+        lastSong: "This is the first song you've listened to. Welcome to the stream!",
+        song: {
+            name: 'a',
+            artist: 'a',
+            length: 'a',
+            link: 'a',
+            imgLink: 'a',
+            id: 1
+        }
+    })
+
+    const [nextData, setNextData] = useState({
+        duration: 0,
+        playing: false,
+        volume: 0.65,
+        muted: false,
+        currentID: 1
+    })
+
+    const [nextSong, setNextSong] = useState(null)
 
     const [timestamp, setTimestamp] = useState('0:00')
     const [volume, setVolume] = useState(0.65)
@@ -40,7 +66,17 @@ const MusicPlayer = () => {
             muted: data.muted,
             currentID: data.currentID + 1 >= 65 ? 1 : data.currentID + 1
         })
-        newSong()
+        playNextSong()
+        setSong(songNext)
+        setData(nextData)
+        setTimeout(() => {
+            preload(song.song.id + 1)
+        }, 1000)
+    }
+
+    const playNextSong = () => {
+        audioRef.current.src = nextSong;
+        audioRef.current.play();
     }
 
     const mute = () => {
@@ -57,13 +93,14 @@ const MusicPlayer = () => {
 
     const newSong = async () => {
         var lastSong = `${song.song.name} - ${song.song.artist}`;
-        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/curr/${state.radio}`, {responseType: 'blob'}).then((res) => {
+        var currId = 0
+        await axios.get(`https://10.0.0.237/api/geomusic/curr/${state.radio}`, {responseType: 'blob'}).then((res) => {
             var blob = new Blob([res.data], { type: 'audio/mp3' });
             var url = window.URL.createObjectURL(blob)
             audioRef.current.src = url;
             audioRef.current.play();
         })
-        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/sync/${state.radio}`).then((res) => {
+        await axios.get(`https://10.0.0.237/api/geomusic/sync/${state.radio}`).then((res) => {
             setTimestamp(res.data.currSec)
             setData({
                 playing: data.playing,
@@ -83,26 +120,101 @@ const MusicPlayer = () => {
                 }
             })
             audioRef.current.currentTime = res.data.currSec;
+            currId = res.data.syncNum
         })
+        return currId
+    }
+
+    const preload = async (currId) => {
+        var lastSong = `${song.song.name} - ${song.song.artist}`;
+        await axios.get(`https://10.0.0.237/api/geomusic/currnext/${state.radio}/${currId}`, {responseType: 'blob'}).then((res) => {
+            var blob = new Blob([res.data], { type: 'audio/mp3' });
+            var url = window.URL.createObjectURL(blob)
+            setNextSong(url)
+        })
+        await axios.get(`https://10.0.0.237/api/geomusic/syncnext/${state.radio}/${currId}`).then((res) => {
+            setNextData({
+                playing: data.playing,
+                muted: true,
+                currentID: res.data.syncNum
+            })
+            setSongNext({
+                currentSong: 'a',
+                lastSong: lastSong,
+                song: {
+                    name: res.data.metastat.title,
+                    artist: res.data.metastat.artist,
+                    length: res.data.metastat.durrNum,
+                    link: res.data.metastat.title,
+                    imgLink: res.data.metastat.picture,
+                    id: res.data.metastat.track
+                }
+            })
+        })
+    }
+
+    const play = () => {
+        audioRef.current.play()
+        document.querySelector('.play-button').classList.add('indent')
+        document.querySelector('.pause-button').classList.remove('indent')
+    }
+
+    const pause = () => {
+        audioRef.current.pause()
+        document.querySelector('.play-button').classList.remove('indent')
+        document.querySelector('.pause-button').classList.add('indent')
     }
   
     useEffect(() => {
       audioRef.current.volume = volume
     }, [volume])
 
-    useEffect(() => {
-        audioRef.current.pause()
-        next()
-    }, [state.radio])
+    //useEffect(() => {
+     //   audioRef.current.pause()
+     //   next()
+    //}, [state.radio])
 
     useEffect(() => {
         audioRef.current.muted = true
-        setTimeout(() => {
+        setTimeout(async () => {
             const img = audioRef.current.muted === false ? '/images/Volume.ico' : '/images/Mute volume.ico'
             document.getElementById('mute').src = img
-            newSong()
+            var currId = await newSong()
+            await preload(currId + 1)
         }, 1000)
     }, [])
+
+
+    //visual stuff
+
+    const showDrops = () => {
+        document.querySelectorAll('.radio-dropmenu').forEach((el) => {
+            el.classList.remove('radio-hidemenu')
+        })
+    }
+
+    const hideDrops = () => {
+        document.querySelectorAll('.radio-dropmenu').forEach((el) => {
+            el.classList.add('radio-hidemenu')
+        }) 
+    }
+
+    const clickLink = (link) => {
+        dispatch({type: 'update_link', link: link})
+    }
+
+    const hidePlayer = () => {
+        var elements = document.querySelectorAll('.radio-toggle')
+        elements.forEach((el) => {
+            if (el.classList.contains('audio-open')) {
+                el.classList.remove('audio-open')
+                el.classList.add('audio-closed')
+            } else {
+                el.classList.add('audio-open')
+                el.classList.remove('audio-closed')
+            }
+        })
+    }
 
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -113,22 +225,41 @@ const MusicPlayer = () => {
                         <h4 className='title' style={{marginLeft: '2px'}}>WinPlay3</h4>
                     </div>
                     <div className='buttons' style={{marginRight: '1px'}}>
-                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: 'pointer'}} disabled="true"><p style={{margin: 0, color: 'black'}}>X</p></button>
-                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: 'pointer'}} disabled="true"><p style={{margin: 0, color: 'black'}}>◻</p></button>
-                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: 'pointer'}} disabled="true"><p style={{margin: 0, color: 'black'}}>_</p></button>
+                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: "url(/images/cursor/pointer.cur), auto"}} disabled="true"><p onClick={() => hidePlayer()} style={{margin: 0, color: 'black'}}>X</p></button>
+                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: "url(/images/cursor/pointer.cur), auto"}} disabled="true"><p onClick={() => hidePlayer()} style={{margin: 0, color: 'black'}}>◻</p></button>
+                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: "url(/images/cursor/pointer.cur), auto"}} disabled="true"><p onClick={() => hidePlayer()} style={{margin: 0, color: 'black'}}>_</p></button>
                     </div>
                 </div>
-                <div className='file-bar' style={{width: '100%', height: '25px', display: 'flex', alignItems: 'center', borderBottom: 'black solid 1px'}}>
-                    <button style={{backgroundColor: '#C0C7C8', border: '0', cursor: 'pointer'}}><p style={{margin: 0, color: 'black'}}>File</p></button>
-                    <button style={{backgroundColor: '#C0C7C8', border: '0', cursor: 'pointer'}}><p style={{margin: 0, color: 'black'}}>Options</p></button>
-                    <button style={{backgroundColor: '#C0C7C8', border: '0', cursor: 'pointer'}}><p style={{margin: 0, color: 'black'}}>Help</p></button>
+                <div onMouseLeave={() => hideDrops()} className='file-bar audio-open radio-toggle' style={{width: '100%', height: '25px', alignItems: 'flex-start', borderBottom: 'black solid 1px'}}>
+                    <div className='radio-files' style={{gridTemplateColumns: '100%', padding: '0', cursor: "url(/images/cursor/pointer.cur), auto"}}>
+                        <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}>File</p>
+                        <div className='radio-hidemenu radio-dropmenu'>
+                            <p onClick={() => window.open(`https://www.youtube.com/results?search_query=${song.song.name} ${song.song.artist}`)} className='radio-file'>Find Song</p>
+                            <p onClick={() => saveAs(`https://10.0.0.237/api/geomusic/curr/${state.radio}`)} className='radio-file'>Download</p>
+                        </div>
+                    </div>
+                    <div className='radio-options' style={{cursor: "url(/images/cursor/pointer.cur), auto"}}>
+                        <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}>Options</p>
+                        <div className='radio-hidemenu radio-dropmenu'>
+                            <p onClick={() => play()} className='radio-option'>Play</p>
+                            <p onClick={() => pause()} className='radio-option'>Pause</p>
+                            <p onClick={() => mute()} className='radio-option'>Mute</p>
+                        </div>
+                    </div>
+                    <div className='radio-helps' style={{cursor: "url(/images/cursor/pointer.cur), auto"}}>
+                        <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}>Help</p>
+                        <div className='radio-hidemenu radio-dropmenu'>
+                            <p onClick={() => clickLink('//help/listening/')} className='radio-help'>Listening</p>
+                            <p onClick={() => clickLink('//help/listening/')} className='radio-help'>Playlist</p>
+                        </div>
+                    </div>
                 </div>
                 <div style={{padding: '20px', border: 'outset 3px', display: 'grid', gridTemplateColumns: "80% 20%"}}>
                     <div className='black-box' style={{backgroundColor: 'black', display: 'grid', gridTemplateRows: '15% 85%', border: 'inset 3px', padding: '10px'}}>
                         <div style={{display: 'grid', gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "20px 45px 20px"}}>
                             <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 1, gridRow: 1}}>Track</p>
                             <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 2, gridRow: 1}}>Min : Sec</p>
-                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 3, gridRow: 1}}>Mode</p>
+                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 3, gridRow: 1}}>Length</p>
                             <p style={{color: '#00FF00', fontFamily: 'alarm', fontSize: '50px', margin: '0', gridColumn: 1, gridRow: 2, opacity: '0.55'}}>{data.currentID}</p>
                             <p style={{color: '#00FF00', fontFamily: 'alarm', fontSize: '50px', margin: '0', gridColumn: 2, gridRow: 2}}>{parseInt(timestamp / 60)}:{parseInt(timestamp % 60) < 10 ? "0" : null}{parseInt(timestamp % 60)}</p>
                             <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 3, gridRow: 2, lineHeight: '30px'}}>{(parseInt(song.song.length) / 60).toFixed(0)}:{(parseInt(song.song.length) % 60).toFixed(0)}</p>
@@ -138,21 +269,21 @@ const MusicPlayer = () => {
                     </div>
                     <div>
                         <div style={{margin: '15px', display: 'inline-flex', justifyContent: 'center', alignItems: 'center', border: 'outset 3px'}}>
-                            <button style={{display: 'flex', alignItems: 'center', border: 'solid black 1px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: 'pointer'}}>
-                                <a href={song.song.link}><p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>i</p></a>
+                            <button  onClick={() => hidePlayer()} style={{display: 'flex', alignItems: 'center', border: 'solid black 1px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}}>
+                                <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>i</p>
                             </button>
                         </div>
                     </div>
-                    <hr style={{width: '100%', height: '1px', gridColumn: 'span 2'}}/>
+                    <hr className='audio-open radio-toggle' style={{width: '100%', height: '1px', gridColumn: 'span 2'}}/>
                     <div style={{gridColumn: 'span 2'}}>
-                        <div style={{display: 'inline-flex', alignItems: 'center', border: "outset 3px"}}>
-                            <button style={{display: 'flex', alignItems: 'center', border: 'solid black 1px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: 'pointer'}} onClick={() => audioRef.current.play()}>
+                        <div className='audio-open radio-toggle' style={{alignItems: 'center', border: "outset 3px"}}>
+                            <button className='play-button indent player-button' onClick={() => play()}>
                                 <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>▶</p>
                                 </button>
-                            <button style={{display: 'flex', alignItems: 'center', border: 'solid black 1px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: 'pointer'}} onClick={() => audioRef.current.pause()}>
+                            <button className='pause-button player-button' onClick={() => pause()}>
                                 <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>■</p>
                             </button>
-                            <button style={{display: 'flex', alignItems: 'center', border: 'solid black 1px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: 'pointer'}} onClick={() => mute()}>
+                            <button style={{display: 'flex', alignItems: 'center', border: 'outset 3px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => mute()}>
                                 <img alt='mute button' id='mute' src='/images/Mute volume.ico' style={{width: "25px", height: "20px", textAlign: 'center', margin: "0"}}/>
                             </button>
                             <input style={{marginLeft: '5px'}} className='slider' type={'range'} max="100" onChange={(e) => setVolume(e.currentTarget.value / 100)}/>
@@ -161,14 +292,14 @@ const MusicPlayer = () => {
                 </div>
                 <audio
                     ref={audioRef}
-                    src={''}
                     onEnded={() => next()}
+                    src={''}
                     onLoadedMetadata={() => audioRef.current.play()}
                     onTimeUpdate={e => setTimestamp(e.currentTarget.currentTime)}
                     
                     autoPlay
                 />
-            <div style={{display: 'flex', alignItems: 'center', padding: "5px", border: "outset 3px"}}>
+            <div className='audio-open radio-toggle' style={{alignItems: 'center', padding: "5px", border: "outset 3px"}}>
                 <p style={{marginRight: '10px'}}>Progress:</p><progress className='progress-bar' max={parseInt(song.song.length).toFixed(0)} value={timestamp}/>
             </div>
             </div>
