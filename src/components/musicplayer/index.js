@@ -94,13 +94,13 @@ const MusicPlayer = () => {
     const newSong = async () => {
         var lastSong = `${song.song.name} - ${song.song.artist}`;
         var currId = 0
-        await axios.get(`https://10.0.0.237/api/geomusic/curr/${state.radio}`, {responseType: 'blob'}).then((res) => {
+        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/curr/${state.radio}`, {responseType: 'blob'}).then((res) => {
             var blob = new Blob([res.data], { type: 'audio/mp3' });
             var url = window.URL.createObjectURL(blob)
             audioRef.current.src = url;
             audioRef.current.play();
         })
-        await axios.get(`https://10.0.0.237/api/geomusic/sync/${state.radio}`).then((res) => {
+        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/sync/${state.radio}`).then((res) => {
             setTimestamp(res.data.currSec)
             setData({
                 playing: data.playing,
@@ -127,12 +127,12 @@ const MusicPlayer = () => {
 
     const preload = async (currId) => {
         var lastSong = `${song.song.name} - ${song.song.artist}`;
-        await axios.get(`https://10.0.0.237/api/geomusic/currnext/${state.radio}/${currId}`, {responseType: 'blob'}).then((res) => {
+        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/currnext/${state.radio}/${currId}`, {responseType: 'blob'}).then((res) => {
             var blob = new Blob([res.data], { type: 'audio/mp3' });
             var url = window.URL.createObjectURL(blob)
             setNextSong(url)
         })
-        await axios.get(`https://10.0.0.237/api/geomusic/syncnext/${state.radio}/${currId}`).then((res) => {
+        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/syncnext/${state.radio}/${currId}`).then((res) => {
             setNextData({
                 playing: data.playing,
                 muted: true,
@@ -235,7 +235,7 @@ const MusicPlayer = () => {
                         <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}>File</p>
                         <div className='radio-hidemenu radio-dropmenu'>
                             <p onClick={() => window.open(`https://www.youtube.com/results?search_query=${song.song.name} ${song.song.artist}`)} className='radio-file'>Find Song</p>
-                            <p onClick={() => saveAs(`https://10.0.0.237/api/geomusic/curr/${state.radio}`)} className='radio-file'>Download</p>
+                            <p onClick={() => saveAs(`https://api-nnexsus-server.cfd/api/geomusic/curr/${state.radio}`)} className='radio-file'>Download</p>
                         </div>
                     </div>
                     <div className='radio-options' style={{cursor: "url(/images/cursor/pointer.cur), auto"}}>
