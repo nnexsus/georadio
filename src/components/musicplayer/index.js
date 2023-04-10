@@ -268,7 +268,7 @@ const MusicPlayer = () => {
                         </div>
                     </div>
                     <div>
-                        <div style={{margin: '15px', display: 'inline-flex', justifyContent: 'center', alignItems: 'center', border: 'outset 3px'}}>
+                        <div className='i-button'>
                             <button  onClick={() => hidePlayer()} style={{display: 'flex', alignItems: 'center', border: 'solid black 1px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}}>
                                 <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>i</p>
                             </button>

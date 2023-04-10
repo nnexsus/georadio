@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import { LinkContext } from './context';
 
@@ -30,6 +30,10 @@ const Inbox = () => {
         document.querySelectorAll('.maillist').forEach((el) => el.classList.remove('mailopen'))
         document.getElementById(`${id}`).classList.add('mailopen')
     }
+
+    useEffect(() => {
+        setOpen(0)
+    }, [state.email])
 
     return (
         <Rnd default={{

@@ -14,9 +14,17 @@ const Cyberpunk = () => {
 
     const changeStation = (num) => {
         dispatch({type: 'update_radio', radio: num})
-        dispatch({type: 'new_site', site: 'http://www.nightcity.net/'})
         setRadioload(true)
+        //addSite('http://www.nightcity.net/')
     }
+
+    /*const addSite = (site) => {
+        var updated = state.lastsite
+        if (state.lastsite[0] !== site || state.lastsite[1] !== site) {
+            updated.unshift(site)
+            dispatch({type: 'new_site', lastsite: updated})
+        }
+    } */
 
     return (
         <div onLoad={() => changeStation(1)} id="cyberpunk" style={{width: '100%', backgroundImage: `url(/images/tile2.jpg)`, backgroundSize: '230px', paddingTop: '10px'}}>
@@ -34,17 +42,17 @@ const Cyberpunk = () => {
                 </div>
             </div>
                 <div style={{width: '100%', height: '100%', margin: '20px 0', backgroundImage: 'url(/images/starbd.gif)', boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset', display: 'flex'}}>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' onClick={() => clickLink('http://26.to/foreverfriend/')} src='/images/nightcity/foreverfake.webp' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' onClick={() => clickLink('http://www.silvermoon.site/')} src='/images/nightcity/jsm002.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' onClick={() => clickLink('http://www.neonsunrise.tl/')} src='/images/nightcity/summer_cafe.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' src='/images/ad10.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' onClick={() => clickLink('http://www.pinky.blog/')} src='/images/nightcity/sb2.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' src='/images/nightcity/totallyhamuBANA1.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://26.to/foreverfriend/' onClick={() => clickLink('http://26.to/foreverfriend/')} src='/images/nightcity/foreverfake.webp' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.silvermoon.site/' onClick={() => clickLink('http://www.silvermoon.site/')} src='/images/nightcity/jsm002.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.neonsunrise.tl/' onClick={() => clickLink('http://www.neonsunrise.tl/')} src='/images/nightcity/summer_cafe.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/ad10.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.pinky.blog/' onClick={() => clickLink('http://www.pinky.blog/')} src='/images/nightcity/sb2.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/nightcity/totallyhamuBANA1.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
                 </div>
             <hr style={{width: '85%', height: '1px'}}/>
             <div style={{height: '1070px', marginTop: '50px', display: 'grid', gridTemplateColumns: 'repeat(5, 20%)', gridTemplateRows: 'repeat(3, 1fr)'}}>
                 <div style={{width: '100%', height: '100%', gridRow: 'span 3', gridColumn: 1, margin: '20px 10px 20px 0', backgroundImage: 'url(/images/starbd.gif)', boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset'}}>
-                    <img alt='clickable ad decor' src='/images/nightcity/banner.gif' width='100%' height={'90%'} style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
+                    <img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/nightcity/banner.gif' width='100%' height={'90%'} style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
                 </div>
                 <div style={{gridRow: 1, gridColumn: 4}}>
                     <img alt='decor' width={'100%'} src='/images/nightcity/neon.gif'/>
@@ -71,14 +79,14 @@ const Cyberpunk = () => {
                     <img alt='decor' width={'100%'} height='75px' src='/images/neonlinks.gif' style={{mixBlendMode: 'screen'}}/>
                     <hr style={{width: '80%', height: '1px'}}/>
                     <div style={{display: 'flex', flexDirection: 'column', gap: '5px', padding: '5px'}}>
-                        <button style={{cursor: "url(/images/cursor/pointer.cur), auto", padding: '0', border: 'none'}} onClick={() => clickLink('http://26.to/foreverfriend/')}><img alt='clickable ad decor' src='/images/ad14.gif'/></button>
-                        <button style={{cursor: "url(/images/cursor/pointer.cur), auto", padding: '0', border: 'none'}}><img alt='clickable ad decor' src='/images/ad15.gif'/></button>
-                        <button style={{cursor: "url(/images/cursor/pointer.cur), auto", padding: '0', border: 'none'}}><img alt='clickable ad decor' src='/images/ad18.gif'/></button>
+                        <button title='http://26.to/foreverfriend/' style={{cursor: "url(/images/cursor/pointer.cur), auto", padding: '0', border: 'none'}} onClick={() => clickLink('http://26.to/foreverfriend/')}><img alt='clickable ad decor' src='/images/ad14.gif'/></button>
+                        <button title='blank' style={{cursor: "url(/images/cursor/pointer.cur), auto", padding: '0', border: 'none'}} onClick={() => clickLink('blank')}><img alt='clickable ad decor' src='/images/ad15.gif'/></button>
+                        <button title='blank' style={{cursor: "url(/images/cursor/pointer.cur), auto", padding: '0', border: 'none'}} onClick={() => clickLink('blank')}><img alt='clickable ad decor' src='/images/ad18.gif'/></button>
                     </div>
                     <img alt='decor' width={'100%'} src='/images/nightcity/neonyellow.gif'/>
                 </div>
                 <div style={{width: '100%', height: '100%', gridRow: 'span 3', gridColumn: 5, margin: '20px 10px 20px 0', backgroundImage: 'url(/images/starbd.gif)', boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset'}}>
-                    <img alt='clickable ad decor' src='/images/nightcity/casino.gif' width='100%' height={'90%'} style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
+                    <img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/nightcity/casino.gif' width='100%' height={'90%'} style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
                 </div>
             </div>
         </div>

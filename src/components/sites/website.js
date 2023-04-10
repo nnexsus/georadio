@@ -10,6 +10,9 @@ const Website = () => {
 
     const changeStation = (num) => {
         dispatch({type: 'update_radio', radio: num})
+        var updated = state.lastsite
+        updated.unshift('http://www.geomusic.net/')
+        dispatch({type: 'new_site', lastsite: updated})
         setRadioload(true)
     }
 

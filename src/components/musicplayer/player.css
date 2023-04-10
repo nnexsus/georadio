@@ -24,3 +24,17 @@
 .audio-open {
     display: flex;
 }
+
+.i-button {
+    margin: 15px; 
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    border: outset 3px;
+}
+
+@media screen and (max-width: 550px) {
+    .i-button {
+        display: none;
+    }
+}

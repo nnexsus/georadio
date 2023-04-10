@@ -8,7 +8,7 @@ import './css/browser.css';
 const Browser = () => {
 
     const [favBar, setFavBar] = useState('')
-    const [addBar, setAddBar] = useState('http://www.geomusic.net/');
+    const [addBar, setAddBar] = useState('http://www.home.com/');
     const [state, dispatch] = useContext(LinkContext);
 
     const onClick = () => {
@@ -83,6 +83,24 @@ const Browser = () => {
         }
     }
 
+    const navback = () => {
+        var updated = state.navdepth + 1
+        dispatch({type: 'new_depth', navdepth: updated})
+        setAddBar(state.lastsite[updated])
+    }
+
+    const navforward = () => {
+        var updated = Math.abs(state.navdepth - 1)
+        dispatch({type: 'new_depth', navdepth: updated})
+        setAddBar(state.lastsite[updated])
+    }
+
+    useEffect(() => {
+        dispatch({type: 'new_site', navdepth: ['http://www.home.com/']})
+        dispatch({type: 'new_depth', navdepth: 0})
+        setAddBar('http://www.home.com/')
+    }, [state.browser])
+
     return (
         <Rnd default={{
                 x: 0,
@@ -111,10 +129,10 @@ const Browser = () => {
                     </div>
 
                     <div className='buttons-bar' style={{width: '100%', height: '24px', display: 'flex', alignItems: 'center', gridRow: 4}}>
-                        <button title='Open Folder' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/opendir.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Home' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' onClick={() => setAddBar('http://www.geomusic.net/')} src='images/winicon/explorer/Home.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Back' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/arrowl-lit.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Forward' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/arrowr-unlit.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Open Mail' className='button-on-bar'><img alt='decor' onClick={() => dispatch({type: 'update_app', browser: state.browser, notes: state.notes, inbox: !state.inbox})} src='images/winicon/explorer/opendir.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Home' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' onClick={() => setAddBar('http://www.home.com/')} src='images/winicon/explorer/Home.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Back' disabled={`${state.navdepth >= state.navdepth.length - 1 ? true : false}`} className='button-on-bar'><img alt='decor' onClick={() => setAddBar('http://www.home.com/')} src='images/winicon/explorer/arrowl-lit.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Forward' disabled={`${state.navdepth <= 0 ? true : false}`} className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/arrowr-unlit.png' width={'20px'} height={'20px'}/></button>
                         <button title='Unload' className='button-on-bar'><img alt='decor' onClick={() => setAddBar('')} src='images/winicon/explorer/Shred.png' width={'20px'} height={'20px'}/></button>
                         <button title='Refresh' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Refresh.png' width={'20px'} height={'20px'}/></button>
                         <button title='New Folder' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/New folder.png' width={'20px'} height={'20px'}/></button>
@@ -177,7 +195,7 @@ const Browser = () => {
                                 <p onClick={() => setAddBar('//help/navigating/')} className='help'>Navigating</p>
                                 <p onClick={() => setAddBar('//help/listening/')} className='help'>Listening</p>
                                 <p onClick={() => setAddBar('//help/apps/')} className='help'>Apps</p>
-                                <p onClick={() => setAddBar('//help/about/')} className='help'>About</p>
+                                <p onClick={() => setAddBar('http://www.home.com/')} className='help'>Home</p>
                             </div>
                         </button>
                     </div>

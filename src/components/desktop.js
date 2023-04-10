@@ -5,7 +5,9 @@ import Browser from './browser';
 import Notes from './notes';
 
 import './desktopStyles.css';
+import './css/mobile.css';
 import Inbox from './inbox';
+import axios from 'axios';
 
 const Desktop = () => {
 
@@ -67,16 +69,25 @@ const Desktop = () => {
         document.querySelectorAll('.start').forEach((el) => {
             el.classList.add('hidestart')
         }) 
-    } 
+    }
+
+    const setVisit = () => {
+        if(localStorage.getItem('visted') !== true) {
+            localStorage.setItem('visited', true)
+            axios.get('https://api-nnexsus-server.cfd/api/cookieset/georadio').then((re) => {
+                console.log(re)
+            })
+        }
+    }
 
     return (
-        <div style={{width: "100%", height: `100vh`, backgroundColor: "teal", overflow: 'hidden'}} id='desktop'>
+        <div onLoad={() => setVisit()} style={{width: "100%", height: `100vh`, backgroundColor: "teal", overflow: 'hidden'}} id='desktop'>
             <div style={{height: '80%', display: "grid", gridTemplateColumns: "repeat(10,10%)", gridTemplateRows: 'repeat(10, 10%)', minHeight: '100%', padding: '20px', gap: '20px'}} className='icons'>
                 <div className='app-icon' style={{ gridRow: '1', gridColumn: '1' }}>
                     <img alt='decor' src='/images/My Computer.ico' width={'50px'} height={'44px'} style={{imageRendering: "pixelated"}}/>
                     <p>My Computer</p>
                 </div>
-                <div className='app-icon' style={{ gridRow: '4', gridColumn: '1', whiteSpace: 'nowrap' }}>
+                <div className='app-icon' style={{ gridRow: '4', gridColumn: '1' }}>
                     <img alt='decor' src='/images/2pcs.png' width={'50px'} height={'44px'} style={{imageRendering: "pixelated"}}/>
                     <p style={{textAlign: 'center'}}>Network Neighborhood</p>
                 </div>
@@ -153,6 +164,8 @@ const Desktop = () => {
                     <img alt='decor' style={{marginLeft: '5px'}} src='/images/winicon/220.ico' /><h2 style={{color: 'black'}}>{(hour % 12) === 0 ? 12 + ":" : (hour % 12) + ":"}{minute < 10 ? "0" + minute : minute} {hour > 12 ? "PM" : "AM"}</h2>
                 </div>
             </div>
+
+            <iframe src='https://nnexsus.net/' />
         </div>
     )
 }

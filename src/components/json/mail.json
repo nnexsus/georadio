@@ -4,6 +4,7 @@
         {"id": 1, "title": "Test 2", "from": "GeoMusic Subscriber Service", "text": "test aaaaaaaaaaaaaaaa", "img": true, "important": true},
         {"id": 2, "title": "Security Alert!!", "from": "WebNotifier", "text": "Your computer has recent visited a site that has has been reported to infect users!! To solve this issue, click <a href='http://[Object object]'>here</a>.", "img": false, "important": true},
         {"id": 3, "title": "Verify Account", "from": "BlogHost Account Service", "text": "You've recently set up an account with us. To begin creating and hosting your site, please verify here: <a href='http://www.bloghost.com/verify/key?=828a-b38v-b3i2'>Verify Account</a>", "img": false, "important": true},
-        {"id": 4, "title": "Every Site", "from": "nnexsus", "text": "Well, it appears you've managed to visit every single site I made, including the hidden ones. Good job!! (Thank you as well). Now, I've got one last link for you: 'http://www.com/'.", "img": false, "important": false}
+        {"id": 4, "title": "Every Site", "from": "nnexsus", "text": "Well, it appears you've managed to visit every single site I made, including the hidden ones. Good job!! (Thank you as well). Now, I've got one last link for you: 'http://www.com/'.", "img": false, "important": false},
+        {"id": 5, "title": "Thank you!!", "from": "malilist@silvermoon.site", "text": "Thank you for joining the Silver Moon mailing list!! Any important updates to the site or series will now appear in your inbox (assuming i keep on top of things).", "img": false, "important": false}
     ]
 }
