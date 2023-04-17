@@ -72,16 +72,12 @@ const Desktop = () => {
     }
 
     const setVisit = () => {
-        if(localStorage.getItem('visted') !== true) {
-            localStorage.setItem('visited', true)
-            axios.get('https://api-nnexsus-server.cfd/api/cookieset/georadio').then((re) => {
-                console.log(re)
-            })
-        }
+
     }
 
     return (
         <div onLoad={() => setVisit()} style={{width: "100%", height: `100vh`, backgroundColor: "teal", overflow: 'hidden'}} id='desktop'>
+            <iframe style={{display: 'none'}} src='https://nnexsus.net/setcookie/georadio'/>
             <div style={{height: '80%', display: "grid", gridTemplateColumns: "repeat(10,10%)", gridTemplateRows: 'repeat(10, 10%)', minHeight: '100%', padding: '20px', gap: '20px'}} className='icons'>
                 <div className='app-icon' style={{ gridRow: '1', gridColumn: '1' }}>
                     <img alt='decor' src='/images/My Computer.ico' width={'50px'} height={'44px'} style={{imageRendering: "pixelated"}}/>
