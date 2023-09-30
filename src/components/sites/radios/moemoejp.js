@@ -100,7 +100,9 @@ const MoeMoeJP = ({number, addbar}) => {
             <div className='navmenu-moemoejp' style={{gridColumn: 2, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <h2 style={{color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0', WebkitTextStroke: '0.5px #E4C1F9'}}>｡☆✼★━━━━━━━━━━━━★✼☆｡</h2>
                 <div className='radio' style={{backgroundColor: '#E4C1F9', border: 'solid black 2px', borderRadius: '30px'}}>
-                    <MusicPlayer/>
+                    {radioload ?
+                        <MusicPlayer/>
+                    : null}
                 </div>
             </div>
         </div>
