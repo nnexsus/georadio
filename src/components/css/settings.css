@@ -1,0 +1,13 @@
+.submit-button {
+    border: outset 3px;
+    outline: solid 1px black;
+}
+
+.submit-button:hover {
+    filter: brightness(1.1);
+}
+
+.submit-button:active {
+    border: inset 3px;
+    filter: brightness(0.9);
+}

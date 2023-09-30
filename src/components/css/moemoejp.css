@@ -1,0 +1,22 @@
+.moemoenav {
+    background: none; 
+    margin: 0; 
+    padding: 0; 
+    border: none; 
+    cursor: pointer;
+    width: 80px;
+    height: 24px;
+}
+
+.moemoenav img {
+    width: 80px;
+    height: 24px;
+}
+
+.liquidnav {
+    background: none; 
+    margin: 0; 
+    padding: 0; 
+    border: none; 
+    cursor: pointer;
+}

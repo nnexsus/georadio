@@ -1,4 +1,4 @@
-import { LinkProvider } from "./components/context";
+import { LinkProvider } from "./components/systems/context";
 import Desktop from "./components/desktop";
 
 

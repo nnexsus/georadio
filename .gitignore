@@ -24,15 +24,14 @@ yarn-error.log*
 
 georadio.zip
 radiopixelv1-1.aseprite
+radioicons.aseprite
 
 #no peeking
-/src/components/sites/ventsite.js
-/src/components/sites/closetnet.js
-/src/components/sites/foreverfriend.js
-/src/components/sitechanger.js
+/src/components/systems/sitechanger.js
 /src/components/sites/help/
 /src/components/sites/blogs/
 /src/components/sites/hidden/
+/src/components/json/
+/src/components/apps/settings.js
 
-/public/images/18site
-/public/images/kantoonline/
+/public/images/

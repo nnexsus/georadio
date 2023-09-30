@@ -1,0 +1,22 @@
+.context-button {
+    width: 100%;
+    text-align: left;
+    text-indent: 15px;
+    font-family: W95FA;
+    text-wrap: nowrap;
+
+    background: none;
+    border: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+.context-button:hover, .context-button:active {
+    background: blue;
+    color: white;
+}
+
+.context-hr {
+    margin: 2px;
+}

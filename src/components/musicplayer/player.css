@@ -38,3 +38,28 @@
         display: none;
     }
 }
+
+.scrolling {
+    overflow: hidden;
+    animation: text-scroll 15s 2s infinite linear forwards;
+}
+
+@keyframes text-scroll {
+    0% {
+        transform: translateX(200%);
+        opacity: 0;
+    } 10% {
+        transform: translateX(15%);
+        opacity: 0.5;
+    } 12% {
+        opacity: 1;
+    } 90% {
+        transform: translateX(-50%);
+        opacity: 1;
+    } 92% { 
+        opacity: 0.5;
+    } 100% {
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+}

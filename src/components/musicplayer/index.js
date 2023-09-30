@@ -1,25 +1,26 @@
 import axios from 'axios';
 import { useState, useEffect, useRef, useContext } from 'react';
 
-import { LinkContext } from './../context';
+import { LinkContext } from './../systems/context';
 
 import './player.css';
 import { saveAs } from 'file-saver';
+
+const radios = ['georadio', 'nightcity', 'channelf', 'neonsunrise', 'neonsunset', 'moemoejp', 'liquidelectrum', 'eyeofthestorm']
 
 const MusicPlayer = () => {
 
     const [state, dispatch] = useContext(LinkContext);
 
     const [song, setSong] = useState({
-        currentSong: 'a',
-        lastSong: "This is the first song you've listened to. Welcome to the stream!",
+        currentSong: '',
         song: {
-            name: 'a',
-            artist: 'a',
-            length: 'a',
-            link: 'a',
-            imgLink: 'a',
-            id: 'run'
+            name: 'Loading...',
+            artist: '',
+            length: '',
+            link: '',
+            imgLink: '',
+            id: ''
         }
     })
 
@@ -32,14 +33,13 @@ const MusicPlayer = () => {
     })
 
     const [songNext, setSongNext] = useState({
-        currentSong: 'a',
-        lastSong: "This is the first song you've listened to. Welcome to the stream!",
+        currentSong: '',
         song: {
-            name: 'a',
-            artist: 'a',
-            length: 'a',
-            link: 'a',
-            imgLink: 'a',
+            name: 'Loading...',
+            artist: '',
+            length: '',
+            link: '',
+            imgLink: '',
             id: 1
         }
     })
@@ -52,6 +52,10 @@ const MusicPlayer = () => {
         currentID: 1
     })
 
+    const [lastSong, setLastSong] = useState({
+        artist: "This is the first song you've listened to. Welcome to the stream!",
+        song: ""
+    })
     const [nextSong, setNextSong] = useState(null)
 
     const [timestamp, setTimestamp] = useState('0:00')
@@ -60,6 +64,10 @@ const MusicPlayer = () => {
     const audioRef = useRef()
 
     const next = () => {
+        setLastSong({
+            artist: song.song.artist,
+            song: song.song.name
+        })
         setData({
             playing: data.playing,
             volume: data.volume,
@@ -92,24 +100,33 @@ const MusicPlayer = () => {
     }
 
     const newSong = async () => {
-        var lastSong = `${song.song.name} - ${song.song.artist}`;
         var currId = 0
-        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/curr/${state.radio}`, {responseType: 'blob'}).then((res) => {
+        await axios.get(`https://arina.lol/api/geomusic/curr/${state.radio}`, {responseType: 'blob'}).then((res) => {
+            if (res.status === 404) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Cannot connect to server! Check uptime on nnexsus.net'})
+            }
+            if (res.status > 220) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Unable to get data for current song! (geo-curr-err)'})
+            }
             var blob = new Blob([res.data], { type: 'audio/mp3' });
             var url = window.URL.createObjectURL(blob)
             audioRef.current.src = url;
             audioRef.current.play();
         })
-        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/sync/${state.radio}`).then((res) => {
+        await axios.get(`https://arina.lol/api/geomusic/sync/${state.radio}`).then((res) => {
+            if (res.status === 404) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Cannot connect to server! Check uptime on nnexsus.net'})
+            }
+            if (res.status > 220) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Unable to get info for current song! (geo-sync-err)'})
+            }
             setTimestamp(res.data.currSec)
             setData({
                 playing: data.playing,
-                muted: true,
+                muted: false,
                 currentID: res.data.syncNum
             })
             setSong({
-                currentSong: 'a',
-                lastSong: lastSong,
                 song: {
                     name: res.data.metastat.title,
                     artist: res.data.metastat.artist,
@@ -126,21 +143,31 @@ const MusicPlayer = () => {
     }
 
     const preload = async (currId) => {
-        var lastSong = `${song.song.name} - ${song.song.artist}`;
-        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/currnext/${state.radio}/${currId}`, {responseType: 'blob'}).then((res) => {
+        await axios.get(`https://arina.lol/api/geomusic/currnext/${state.radio}/${currId}`, {responseType: 'blob'}).then((res) => {
+            if (res.status === 404) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Cannot connect to server! Check uptime on nnexsus.net'})
+            }
+            if (res.status > 220) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Unable to get data for next song! (geo-currnext-err)'})
+            }
             var blob = new Blob([res.data], { type: 'audio/mp3' });
             var url = window.URL.createObjectURL(blob)
             setNextSong(url)
         })
-        await axios.get(`https://api-nnexsus-server.cfd/api/geomusic/syncnext/${state.radio}/${currId}`).then((res) => {
+        await axios.get(`https://arina.lol/api/geomusic/syncnext/${state.radio}/${currId}`).then((res) => {
+            if (res.status === 404) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Cannot connect to server! Check uptime on nnexsus.net'})
+            }
+            if (res.status > 220) {
+                return dispatch({type: 'update_error', error: true, errorMsg: 'Unable to get info for next song! (geo-syncnext-err)'})
+            }
             setNextData({
                 playing: data.playing,
-                muted: true,
+                muted: false,
                 currentID: res.data.syncNum
             })
             setSongNext({
                 currentSong: 'a',
-                lastSong: lastSong,
                 song: {
                     name: res.data.metastat.title,
                     artist: res.data.metastat.artist,
@@ -169,13 +196,8 @@ const MusicPlayer = () => {
       audioRef.current.volume = volume
     }, [volume])
 
-    //useEffect(() => {
-     //   audioRef.current.pause()
-     //   next()
-    //}, [state.radio])
-
     useEffect(() => {
-        audioRef.current.muted = true
+        audioRef.current.muted = false
         setTimeout(async () => {
             const img = audioRef.current.muted === false ? '/images/Volume.ico' : '/images/Mute volume.ico'
             document.getElementById('mute').src = img
@@ -235,7 +257,7 @@ const MusicPlayer = () => {
                         <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}>File</p>
                         <div className='radio-hidemenu radio-dropmenu'>
                             <p onClick={() => window.open(`https://www.youtube.com/results?search_query=${song.song.name} ${song.song.artist}`)} className='radio-file'>Find Song</p>
-                            <p onClick={() => saveAs(`https://api-nnexsus-server.cfd/api/geomusic/curr/${state.radio}`)} className='radio-file'>Download</p>
+                            <p onClick={() => saveAs(`https://arina.lol/api/geomusic/curr/${state.radio}`)} className='radio-file'>Download</p>
                         </div>
                     </div>
                     <div className='radio-options' style={{cursor: "url(/images/cursor/pointer.cur), auto"}}>
@@ -255,16 +277,18 @@ const MusicPlayer = () => {
                     </div>
                 </div>
                 <div style={{padding: '20px', border: 'outset 3px', display: 'grid', gridTemplateColumns: "80% 20%"}}>
-                    <div className='black-box' style={{backgroundColor: 'black', display: 'grid', gridTemplateRows: '15% 85%', border: 'inset 3px', padding: '10px'}}>
+                    <div className='black-box' style={{backgroundColor: 'black', overflowX: 'scroll', overflowY: 'hidden', display: 'grid', gridTemplateRows: '15% 85%', border: 'inset 3px', padding: '10px'}}>
                         <div style={{display: 'grid', gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "20px 45px 20px"}}>
-                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 1, gridRow: 1}}>Track</p>
-                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 2, gridRow: 1}}>Min : Sec</p>
+                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 1, gridRow: 1}}>Track#</p>
+                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 2, gridRow: 1, marginLeft: '10px'}}>Time</p>
                             <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 3, gridRow: 1}}>Length</p>
                             <p style={{color: '#00FF00', fontFamily: 'alarm', fontSize: '50px', margin: '0', gridColumn: 1, gridRow: 2, opacity: '0.55'}}>{data.currentID}</p>
-                            <p style={{color: '#00FF00', fontFamily: 'alarm', fontSize: '50px', margin: '0', gridColumn: 2, gridRow: 2}}>{parseInt(timestamp / 60)}:{parseInt(timestamp % 60) < 10 ? "0" : null}{parseInt(timestamp % 60)}</p>
-                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 3, gridRow: 2, lineHeight: '30px'}}>{(parseInt(song.song.length) / 60).toFixed(0)}:{(parseInt(song.song.length) % 60).toFixed(0)}</p>
-                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 'span 3', gridRow: 3, lineHeight: '30px', overflow: 'hidden'}}>{song.song.name} - {song.song.artist}</p>
-                            <img alt='decor' src={song.song.imgLink} style={{gridRow: 'span 3', gridColumn: 4}} width="100%" height="100%" />
+                            <p style={{color: '#00FF00', fontFamily: 'alarm', fontSize: '50px', margin: '0', gridColumn: 2, gridRow: 2, marginLeft: '10px'}}>{parseInt(timestamp / 60)}:{parseInt(timestamp % 60) < 10 ? "0" : null}{parseInt(timestamp % 60)}</p>
+                            <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', gridColumn: 3, gridRow: 2, lineHeight: '30px', marginLeft: '10px'}}>{(parseInt(song.song.length) / 60).toFixed(0)}:{(parseInt(song.song.length) % 60).toFixed(0)}</p>
+                            <div style={{gridColumn: 'span 3', gridRow: 3, overflow: 'hidden'}}>
+                                <p style={{color: '#00FF00', fontFamily: 'pixel', fontWeight: '10', margin: '0', fontSize: '10px', lineHeight: '30px', whiteSpace: 'nowrap', width: '200%', textAlign: 'left', overflow: 'hidden', textOverflow: 'ellipsis'}} className='scrolling'>{song.song.name} - {song.song.artist}</p>
+                            </div>
+                            <img alt='decor' src={song.song.imgLink !== undefined ? song.song.imgLink : `/images/home/${radios[state.radio]}.png`} style={{gridRow: 'span 3', gridColumn: 4, aspectRatio: '1/1', imageRendering: 'pixelated', marginLeft: '5px'}} height="100%" />
                         </div>
                     </div>
                     <div>
@@ -296,16 +320,15 @@ const MusicPlayer = () => {
                     src={''}
                     onLoadedMetadata={() => audioRef.current.play()}
                     onTimeUpdate={e => setTimestamp(e.currentTarget.currentTime)}
-                    
                     autoPlay
                 />
-            <div className='audio-open radio-toggle' style={{alignItems: 'center', padding: "5px", border: "outset 3px"}}>
-                <p style={{marginRight: '10px'}}>Progress:</p><progress className='progress-bar' max={parseInt(song.song.length).toFixed(0)} value={timestamp}/>
-            </div>
+                <div className='audio-open radio-toggle' style={{alignItems: 'center', padding: "5px", border: "outset 3px"}}>
+                    <p style={{marginRight: '10px'}}>Progress:</p><progress className='progress-bar' max={parseInt(song.song.length).toFixed(0)} value={timestamp}/>
+                </div>
             </div>
 
             <div>
-                <p style={{fontFamily: 'serif'}}>Last Song: <i>{song.lastSong}</i></p>
+                <p style={{fontFamily: 'serif'}}>Last Song: <i>{lastSong.artist - lastSong.song}</i></p>
             </div>
         </div>
     )

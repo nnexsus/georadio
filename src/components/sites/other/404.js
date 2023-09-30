@@ -1,16 +1,16 @@
 import { useContext } from 'react';
-import { LinkContext } from './../context';
+import { LinkContext } from '../../systems/context';
 
-const Empty = () => {
+const Empty = ({number}) => {
 
     const [state, dispatch] = useContext(LinkContext);
 
     const clickLink = (link) => {
-        dispatch({type: 'update_link', link: link})
+        dispatch({type: 'update_link', link: link, browserInt: number})
     }
 
     return (
-        <div id="empty" style={{width: '100%', backgroundImage: `url(/images/tile2.jpg)`, paddingTop: '10px'}}>
+        <div id="empty" style={{width: '100%', height: '100%', backgroundImage: `url(/images/tile2.jpg)`, paddingTop: '10px'}}>
             <div className='opener' style={{textAlign: 'center', backgroundImage: 'url(/images/starbd.gif)', boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset'}}>
                 <h1 style={{fontFamily: 'serif'}}>Error 404 --webpage-not-found.</h1>
                 <hr style={{width: '80%', height: '1px'}}/>

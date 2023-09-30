@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { LinkContext } from './../context';
+import { LinkContext } from './../systems/context';
 
-const ChannelFForum = () => {
+const ChannelFForum = ({number}) => {
 
     const [state, dispatch] = useContext(LinkContext);
 
     const clickLink = (link) => {
-        dispatch({type: 'update_link', link: link})
+        dispatch({type: 'update_link', link: link, browserInt: number})
     }
 
     return (

@@ -1,15 +1,15 @@
 import { useContext, useState } from 'react';
-import { LinkContext } from '../../context';
+import { LinkContext } from '../../systems/context';
 
 import MusicPlayer from '../../musicplayer';
 
-const NeonSunset = () => {
+const NeonSunset = ({number}) => {
 
     const [state, dispatch] = useContext(LinkContext);
     const [radioload, setRadioload] = useState(false)
 
     const clickLink = (link) => {
-        dispatch({type: 'update_link', link: link})
+        dispatch({type: 'update_link', link: link, browserInt: number})
     }
 
     const changeStation = (num) => {
@@ -18,12 +18,14 @@ const NeonSunset = () => {
     }
 
     return (
-        <div onLoad={() => changeStation(4)} id="neonsunset" style={{width: '100%', backgroundImage: `url(/images/sunrise/set.png)`, backgroundSize: '100%', imageRendering: 'pixelated', marginTop: '-11px'}}>
+        <div onLoad={() => changeStation(4)} id="http://neonsunset.tl/" style={{width: '100%', backgroundImage: `url(/images/sunrise/set.webp)`, backgroundSize: '100%', imageRendering: 'pixelated', marginTop: '-11px'}}>
             <div className='opener' style={{textAlign: 'center', padding: '4px', backgroundColor: 'rgba(231, 46, 152, 0.4)', boxShadow: '0 0 5px 5px orange, 0 0 5px 5px orange inset'}}>
                 <fieldset>
                     <legend><h1 style={{color: 'red', fontFamily: 'serif', textShadow: '0 0 3px red', marginBottom: '0', WebkitTextStroke: '0.5px purple'}}>.::Welcome to NEON_SUNSET::.</h1></legend>
                     <img alt='decor' src='/images/sunrise/neoarule.gif' style={{filter: 'hue-rotate(30deg)'}} width={'60%'} />
                     <p style={{color: 'deepskyblue', textShadow: '0 0 5px white', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Home of the ETERNAL_SUMMER_NIGHT Radio --streaming 24/7 citypop to your browser. Powered by YouTube's infinite engine of music::.</p>
+                    <img src='/images/sunrise/neu.gif' width={'50px'} alt='decor new' height={'25px'} />
+                    <p style={{color: 'deepskyblue', textShadow: '0 0 5px white', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Update!! ETERNAL_SUMMER_NIGHT Radio has gone from 48 to 104 songs, enjoy!!::.</p>
                 </fieldset>
             </div>
             <hr style={{width: '65%', height: '1px'}}/>
@@ -38,9 +40,9 @@ const NeonSunset = () => {
                     <img alt='clickable ad decor' onClick={() => clickLink('http://26.to/foreverfriend/')} src='/images/ad3.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
                     <img alt='clickable ad decor' onClick={() => clickLink('http://www.silvermoon.site/')} src='/images/nightcity/jsm002.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
                     <img alt='clickable ad decor' onClick={() => clickLink('http://pokemon2001.com/')} src='/images/sunrise/pokemonad.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
-                    <img alt='clickable ad decor' onClick={() => clickLink('blank')} src='/images/ad10.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.freeishslots.net/' onClick={() => clickLink('http://freeishslots.net/')} src='/images/ad10.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
                     <img alt='clickable ad decor' onClick={() => clickLink('http://www.pinky.blog/')} src='/images/nightcity/sb2.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
-                    <img alt='clickable ad decor' onClick={() => clickLink('blank')} src='/images/nightcity/totallyhamuBANA1.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
+                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.moemoe.jp/' onClick={() => clickLink('http://moemoe.jp/home')} src='/images/moemoejp/banner_princess02.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
                 </div>
             <div style={{height: '1070px', marginTop: '50px', display: 'flex', overflowX: 'scroll'}}>
                 <div>
