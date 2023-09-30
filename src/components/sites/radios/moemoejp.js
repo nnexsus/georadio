@@ -25,6 +25,10 @@ const MoeMoeJP = ({number, addbar}) => {
         dispatch({type: 'update_email', email: updated})
     }
 
+    useEffect(() => {
+        changeStation(5)
+    }, [])
+
     return (
         <div id='http://moemoe.jp/' style={{width: '100%', backgroundImage: `url(/images/moemoejp/pa12.gif)`, backgroundSize: '70px', imageRendering: 'pixelated', marginTop: '-11px'}}>
             <div style={{display: 'grid', gridTemplateColumns: '20% 80%', gridTemplateRows: '100px 475px', margin: '0 10%'}}>
@@ -86,7 +90,7 @@ const MoeMoeJP = ({number, addbar}) => {
         </div>
          : 
          addbar.includes("/home") ? 
-        <div onLoad={() => changeStation(5)} id="moemoejp">
+        <div id="moemoejp">
             <div className='navmenu-moemoejp' style={{gridColumn: 2, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <div className='opener' style={{textAlign: 'center', padding: '4px', backgroundColor: '#E4C1F9', boxShadow: '0 0 5px 5px pink, 0 0 5px 5px #FF99C8 inset'}}>
                     <h2 style={{color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #D0F4DE', marginBottom: '0', WebkitTextStroke: '0.5px #FCF6BD'}}>✧･ﾟ: *✧･ﾟ:* MOEMOE.JP *:･ﾟ✧*:･ﾟ✧</h2>

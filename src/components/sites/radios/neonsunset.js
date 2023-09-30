@@ -17,8 +17,12 @@ const NeonSunset = ({number}) => {
         setRadioload(true)
     }
 
+    useEffect(() => {
+        changeStation(4)
+    }, [])
+
     return (
-        <div onLoad={() => changeStation(4)} id="http://neonsunset.tl/" style={{width: '100%', backgroundImage: `url(/images/sunrise/set.webp)`, backgroundSize: '100%', imageRendering: 'pixelated', marginTop: '-11px'}}>
+        <div id="http://neonsunset.tl/" style={{width: '100%', backgroundImage: `url(/images/sunrise/set.webp)`, backgroundSize: '100%', imageRendering: 'pixelated', marginTop: '-11px'}}>
             <div className='opener' style={{textAlign: 'center', padding: '4px', backgroundColor: 'rgba(231, 46, 152, 0.4)', boxShadow: '0 0 5px 5px orange, 0 0 5px 5px orange inset'}}>
                 <fieldset>
                     <legend><h1 style={{color: 'red', fontFamily: 'serif', textShadow: '0 0 3px red', marginBottom: '0', WebkitTextStroke: '0.5px purple'}}>.::Welcome to NEON_SUNSET::.</h1></legend>

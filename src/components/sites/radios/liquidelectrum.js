@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LinkContext } from '../../systems/context';
 
 import MusicPlayer from '../../musicplayer';
@@ -18,6 +18,10 @@ const LiquidElectrum = ({number, addbar}) => {
         dispatch({type: 'update_radio', radio: num})
         setRadioload(true)
     }
+
+    useEffect(() => {
+        changeStation(6)
+    }, [])
 
     return (
         <div id='http://liquidelectrum.co/' style={{width: '100%', backgroundImage: `url(/images/liquidelectrum/bg.gif)`, backgroundSize: '70px', imageRendering: 'pixelated'}}>

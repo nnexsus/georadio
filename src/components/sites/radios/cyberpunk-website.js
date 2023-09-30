@@ -17,8 +17,12 @@ const Cyberpunk = ({number}) => {
         setRadioload(true)
     }
 
+    useEffect(() => {
+        changeStation(1)
+    }, [])
+
     return (
-        <div onLoad={() => changeStation(1)} id="http://nightcity.net/" style={{width: '100%', backgroundImage: `url(/images/tile2.jpg)`, backgroundSize: '230px', paddingTop: '10px'}}>
+        <div id="http://nightcity.net/" style={{width: '100%', backgroundImage: `url(/images/tile2.jpg)`, backgroundSize: '230px', paddingTop: '10px'}}>
             <div className='opener' style={{textAlign: 'center', backgroundImage: 'url(/images/starbd.gif)', boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset'}}>
                 <h1 style={{color: '#FF4B98', fontFamily: 'serif', textShadow: '0 0 5px #FF4B98', marginBottom: '0'}}>Welcome to Night City!!</h1>
                 <img alt='decor' src='/images/nightcity/neonlines.gif' />

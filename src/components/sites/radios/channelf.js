@@ -18,9 +18,14 @@ const ChannelF = () => {
         dispatch({type: 'update_radio', radio: num})
         setRadioload(true)
     }
+
+    useEffect(() => {
+        changeStation(2)
+    }, [])
+
     //station numbers: [0 - geomusic, 1 - nightcity, 2 - channelf]
     return (
-        <div onLoad={() => changeStation(2)} id="http://channelf.co/" style={{width: '100%', backgroundImage: `url(/images/tile3.webp)`, paddingTop: '10px'}}>
+        <div id="http://channelf.co/" style={{width: '100%', backgroundImage: `url(/images/tile3.webp)`, paddingTop: '10px'}}>
             <div className='radio' style={{display: 'grid', gridTemplateColumns: '20% 80%'}}>
                 <div style={{width: '100%', height: '100%', boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset', gridColumn: '1', gridRow: '1', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 0 20px 0'}}>
                     <h1 style={{textAlign: 'center'}}>ALBUMS:</h1>

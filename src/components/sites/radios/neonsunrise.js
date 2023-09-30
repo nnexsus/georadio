@@ -17,8 +17,12 @@ const NeonSunrise = ({number}) => {
         setRadioload(true)
     }
 
+    useEffect(() => {
+        changeStation(3)
+    }, [])
+
     return (
-        <div onLoad={() => changeStation(3)} id="http://neonsunrise.tl/" style={{width: '100%', backgroundImage: `url(/images/sunrise/surfacefull.webp)`, backgroundSize: '100%', imageRendering: 'pixelated', marginTop: '-11px'}}>
+        <div id="http://neonsunrise.tl/" style={{width: '100%', backgroundImage: `url(/images/sunrise/surfacefull.webp)`, backgroundSize: '100%', imageRendering: 'pixelated', marginTop: '-11px'}}>
             <div className='opener' style={{textAlign: 'center', padding: '4px', backgroundColor: 'rgba(231, 146, 252, 0.4)', boxShadow: '0 0 5px 5px pink, 0 0 5px 5px pink inset'}}>
                 <h1 style={{color: 'pink', fontFamily: 'serif', textShadow: '0 0 3px pink', marginBottom: '0', WebkitTextStroke: '0.5px white'}}>.::Welcome to NEON_SUNRISE::.</h1>
                 <img alt='decor' src='/images/sunrise/neoarule.gif' width={'40%'} />
