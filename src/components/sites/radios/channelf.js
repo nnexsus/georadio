@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LinkContext } from '../../systems/context';
 
 import MusicPlayer from '../../musicplayer';
@@ -49,8 +49,8 @@ const ChannelF = () => {
             </div>
             <div style={{height: '200px', marginTop: '50px', display: 'flex', flexDirection: 'column'}}>
                 <h3>Quote of the day:</h3>
-                <p style={{color: 'yellow', textShadow: '0 0 5px yellow', fontFamily: 'serif', margin: '0 20px', textAlign: 'center'}}>From: {qotd.qotd[Math.min(7, (new Date).getDay())].title}</p>
-                <p style={{color: 'yellow', textShadow: '0 0 5px yellow', fontFamily: 'serif', margin: '0 20px', textAlign: 'center'}}>{qotd.qotd[Math.min(7, (new Date).getDay())].text} - {qotd.qotd[Math.min(7, (new Date).getDay())].from}</p>
+                <p style={{color: 'yellow', textShadow: '0 0 5px yellow', fontFamily: 'serif', margin: '0 20px', textAlign: 'center'}}>From: {qotd.qotd[Math.min(31, (new Date).getDay())].title}</p>
+                <p style={{color: 'yellow', textShadow: '0 0 5px yellow', fontFamily: 'serif', margin: '0 20px', textAlign: 'center'}}>{qotd.qotd[Math.min(31, (new Date).getDay())].text} - {qotd.qotd[Math.min(7, (new Date).getDay())].from}</p>
             </div>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <img alt='decor' src='/images/magicnightray.gif'/>
