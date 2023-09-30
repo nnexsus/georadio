@@ -94,7 +94,7 @@ const Browser = ({number}) => {
     }
 
     const navback = () => {
-        setAddBar(`${sessionStorage.getItem('lastsite')}`)
+        setAddBar(`${sessionStorage.getItem(`lastsite-${number}`)}`)
         document.querySelectorAll('.forward-button').forEach((el) => {
             el.classList.toggle('disabled')
         })
@@ -157,9 +157,9 @@ const Browser = ({number}) => {
 
                     <div className='buttons-bar' style={{width: '100%', height: '24px', margin: '2px 0', marginLeft: '10px', display: 'flex', alignItems: 'center', gridRow: 4}}>
                         <button title='Open Mail' className='button-on-bar'><img alt='decor' onClick={() => dispatch({type: 'update_app', browser: state.browser, notes: state.notes, inbox: !state.inbox})} src='images/winicon/explorer/opendir.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Home' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' onClick={() => setBar('http://home.com/')} src='images/winicon/explorer/Home.png' width={'20px'} height={'20px'}/></button>
-                        <a className='back-a' href='#scrollto' ><button onClick={() => navback()} title='Back' id='back-button' className='button-on-bar forward-button'><img alt='decor' src='images/winicon/explorer/arrowl-lit.png' width={'20px'} height={'20px'}/></button></a>
-                        <a className='back-a' href='#scrollto' ><button onClick={() => navback()} title='Forward' className='button-on-bar forward-button disabled' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/arrowr-lit.png' width={'20px'} height={'20px'}/></button></a>
+                        <a className='back-a' href={`#scrollto-${number}`}><button title='Home' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' onClick={() => setBar('http://home.com/')} src='images/winicon/explorer/Home.png' width={'20px'} height={'20px'}/></button></a>
+                        <a className='back-a' href={`#scrollto-${number}`}><button onClick={() => navback()} title='Back' id='back-button' className='button-on-bar forward-button'><img alt='decor' src='images/winicon/explorer/arrowl-lit.png' width={'20px'} height={'20px'}/></button></a>
+                        <a className='back-a' href={`#scrollto-${number}`}><button onClick={() => navback()} title='Forward' className='button-on-bar forward-button disabled' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/arrowr-lit.png' width={'20px'} height={'20px'}/></button></a>
                         <button title='Unload' className='button-on-bar'><img alt='decor' onClick={() => setAddBar('')} src='images/winicon/explorer/Shred.png' width={'20px'} height={'20px'}/></button>
                         <button title='Refresh' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Refresh.png' width={'20px'} height={'20px'}/></button>
                         <button title='New Folder' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/New folder.png' width={'20px'} height={'20px'}/></button>
@@ -187,7 +187,7 @@ const Browser = ({number}) => {
                     <div className='file-bar content' onMouseLeave={() => hideDrops()} style={{zIndex: 10, width: '25%', height: '21px', marginLeft: '5px', display: 'flex', alignItems: 'flex-start', gridRow: '2'}}>
                         <button className='files' style={{gridTemplateColumns: '100%', padding: '0'}}><p style={{margin: 0, padding: '1px 3px'}} onClick={() => showDrops()}><u>F</u>ile</p>
                             <div className='hidemenu dropmenu'>
-                                <p onClick={() => setAddBar('http://www.home.com/')} className='file'>Back</p>
+                                <p onClick={() => navback()} className='file'>Back</p>
                                 <p onClick={() => setAddBar(addBar)} className='file'>Refresh</p>
                                 <p onClick={() => window.open('https://github.com/nnexsus/georadio', '_blank')} className='file'>Edit</p>
                                 <p onClick={() => onClick()} className='file X'>Close</p>
@@ -221,10 +221,10 @@ const Browser = ({number}) => {
 
                         <button className='helps' style={{gridTemplateColumns: '100%', padding: '0'}}><p style={{margin: 0, padding: '1px 3px'}} onClick={() => showDrops()}><u>H</u>elp</p>
                         <div className='hidemenu dropmenu'>
-                                <p onClick={() => setAddBar('//help/navigating/')} className='help'>Navigating</p>
-                                <p onClick={() => setAddBar('//help/listening/')} className='help'>Listening</p>
-                                <p onClick={() => setAddBar('//help/apps/')} className='help'>Apps</p>
-                                <p onClick={() => setAddBar('http://www.home.com/')} className='help'>Home</p>
+                            <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/navigating/')} className='help'>Navigating</p></a>
+                            <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/listening/')} className='help'>Listening</p></a>
+                            <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/apps/')} className='help'>Apps</p></a>
+                            <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('http://www.home.com/')} className='help'>Home</p></a>
                             </div>
                         </button>
                     </div>

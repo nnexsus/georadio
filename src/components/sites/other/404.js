@@ -19,10 +19,7 @@ const Empty = ({number}) => {
             </div>
             <hr style={{width: '65%', height: '1px'}}/>
             <div style={{padding: '20px', backgroundColor: 'rgba(0,0,0,0.9)'}}>
-                <h3>Common Sites:</h3>
-                <p><b style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.geomusic.net/')}>http://www.geomusic.net/</b></p>
-                <p><b style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.nightcity.net/')}>http://www.nightcity.net/</b></p>
-                <p><b style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.channelf.co/')}>http://www.channelf.co/</b></p>
+                <a href={`#scrollto-${number}`}><p onClick={() => clickLink('http://home.com/')}>Return Home?</p></a>
             </div>
         </div>
     )

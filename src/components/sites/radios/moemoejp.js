@@ -80,10 +80,10 @@ const MoeMoeJP = ({number, addbar}) => {
                     <h2 style={{color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #D0F4DE', marginBottom: '0', WebkitTextStroke: '0.5px #FCF6BD'}}>♥2♥4♥/♥7♥</h2>
                     <p style={{color: '#D0F4DE', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0'}}>ⓅⓁⒺⒶⓈⒺ  ⒸⒽⒺⒸⓀ  ⓄⓊⓉ  ⓂⓎ  ⒻⓇⒾⒺⓃⒹⓈ !!</p>
                     <div style={{display: 'flex'}}>
-                        <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/moemoejp/tiara_fragment.jpg' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                        <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/ad16.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                        <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://silvermoon.site/' onClick={() => clickLink('http://silvermoon.site/')} src='/images/nightcity/moonbutton_1.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
-                        <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://pinky.blog/' onClick={() => clickLink('http://pinky.blog/')} src='/images/nightcity/sb2.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>  
+                        <a href={`#scrollto-${number}`} style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/moemoejp/tiara_fragment.jpg' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                        <a href={`#scrollto-${number}`} style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='blank' onClick={() => clickLink('blank')} src='/images/ad16.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                        <a href={`#scrollto-${number}`} style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://silvermoon.site/' onClick={() => clickLink('http://silvermoon.site/')} src='/images/nightcity/moonbutton_1.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                        <a href={`#scrollto-${number}`} style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://pinky.blog/' onClick={() => clickLink('http://pinky.blog/')} src='/images/nightcity/sb2.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>  
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@ const MoeMoeJP = ({number, addbar}) => {
                 <h2 style={{color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0', WebkitTextStroke: '0.5px #E4C1F9'}}>｡☆✼★━━━━━━━━━━━━★✼☆｡</h2>
                 <div className='radio' style={{backgroundColor: '#E4C1F9', border: 'solid black 2px', borderRadius: '30px'}}>
                     {radioload ?
-                        <MusicPlayer/>
+                        <MusicPlayer radionum={5}/>
                     : null}
                 </div>
             </div>

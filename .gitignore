@@ -28,7 +28,7 @@ radioicons.aseprite
 
 #no peeking
 /src/components/systems/sitechanger.js
-/src/components/sites/help/
+/src/components/sites/help/help.js
 /src/components/sites/blogs/
 /src/components/sites/hidden/
 /src/components/json/

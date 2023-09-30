@@ -34,7 +34,7 @@ const NeonSunrise = ({number}) => {
             <div className='radio' style={{display: 'grid', gridTemplateColumns: '15% 70% 15%', border: 'solid 30px', borderImageSource: 'url(/images/sunrise/sun.gif)', borderImageRepeat: 'repeat', borderImageSlice: '20 0'}}>
                 <div style={{gridColumn: '2'}}>
                     {radioload ?
-                        <MusicPlayer/>
+                        <MusicPlayer radionum={3}/>
                     : null}
                 </div>
             </div>
@@ -42,9 +42,9 @@ const NeonSunrise = ({number}) => {
                     <img alt='clickable ad decor' onClick={() => clickLink('http://26.to/foreverfriend/')} src='/images/ad3.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
                     <img alt='clickable ad decor' onClick={() => clickLink('http://www.silvermoon.site/')} src='/images/nightcity/jsm002.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
                     <img alt='clickable ad decor' onClick={() => clickLink('http://pokemon2001.com/')} src='/images/sunrise/pokemonad.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.freeishslots.net/' onClick={() => clickLink('http://freeishslots.net/')} src='/images/ad10.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href={`#scrollto-${number}`} style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.freeishslots.net/' onClick={() => clickLink('http://freeishslots.net/')} src='/images/ad10.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
                     <img alt='clickable ad decor' onClick={() => clickLink('http://www.pinky.blog/')} src='/images/nightcity/sb2.gif' width='80%' height='43px' style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
-                    <a href='#scrollto' style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.moemoe.jp/' onClick={() => clickLink('http://moemoe.jp/home')} src='/images/moemoejp/banner_princess02.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
+                    <a href={`#scrollto-${number}`} style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.moemoe.jp/' onClick={() => clickLink('http://moemoe.jp/home')} src='/images/moemoejp/banner_princess02.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
                 </div>
             <div style={{height: '1070px', marginTop: '50px', display: 'flex', overflowX: 'scroll'}}>
                 <div style={{height: 'fit-content', backgroundColor: 'rgba(231, 146, 252, 0.4)', boxShadow: '0 0 5px 5px pink, 0 0 5px 5px pink inset'}}>

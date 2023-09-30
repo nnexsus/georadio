@@ -37,7 +37,7 @@ const SearchEngine = ({number}) => {
                                 return (
                                     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
                                         <img width={'25px'} height={'25px'} src={`${el.img !== false ? el.img : '/images/Earth (16 colors).ico'}`} />
-                                        <p key={el.id}><a href='#scrollto' style={{cursor: "url(/images/cursor/pointer.cur), auto", color: 'blue', textDecoration: 'underline'}}>{el.title}</a></p>
+                                        <p key={el.id}><a href={`#scrollto-${number}`} style={{cursor: "url(/images/cursor/pointer.cur), auto", color: 'blue', textDecoration: 'underline'}}>{el.title}</a></p>
                                     </div>
                                 )
                             }) : <img alt='decor' width={'50px'} height={'50px'} src='images/winicon/explorer/Shred.png'/>}
@@ -57,7 +57,7 @@ const SearchEngine = ({number}) => {
                                 </div>
                                 <hr/>
                                 <div style={{marginLeft: '5%'}}>
-                                    <h2 style={{margin: 0}}><a href='#scrollto' style={{cursor: "url(/images/cursor/pointer.cur), auto", color: 'blue', textDecoration: 'underline'}}>{site.title}</a></h2>
+                                    <h2 style={{margin: 0}}><a href={`#scrollto-${number}`} style={{cursor: "url(/images/cursor/pointer.cur), auto", color: 'blue', textDecoration: 'underline'}}>{site.title}</a></h2>
                                     <h3 style={{margin: 0, color: 'black'}}>{site.text}</h3>
                                 </div>
                             </div>

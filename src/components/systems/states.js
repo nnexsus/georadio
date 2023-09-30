@@ -5,7 +5,6 @@ export const reducer = (state, action) => {
         default:
             return state
         case 'update_link':
-            sessionStorage.setItem('history', sessionStorage.getItem('history') + `,${action.link}`)
             return {
                 ...state,
                 link: action.link,

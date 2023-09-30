@@ -143,6 +143,14 @@ const Desktop = () => {
         }
     }
 
+    const muteSite = () => {
+        document.querySelectorAll("audio").forEach((el) => {
+            var curr = !el.muted
+            el.muted = curr
+            document.getElementById("sitemute").src = (curr === false ? '/images/Volume.ico' : '/images/Mute volume.ico')
+        });
+    }
+
     return (
         <>
             <iframe title='cookie for visited panel on my site, thank you for visiting!!' style={{display: 'none'}} src='https://nnexsus.net/setcookie/georadio'/>
@@ -297,8 +305,9 @@ const Desktop = () => {
                             <img style={{imageRendering: 'pixelated'}} alt='decor' width="20px" height="20px" src='/images/winicon/inbox/inbox.png'/><h2 style={{color: 'black'}}>Inbox</h2>
                         </button>
                     </div>
-                    <div style={{backgroundColor: '#C0C7C8', border: 'inset 2px', display: 'flex', alignItems: 'center', height: '25px', gap: '10px', gridColumn: '5'}}>
-                        <img alt='decor' width={'15px'} height={'15px'} style={{marginLeft: '5px'}} src='/images/winicon/220.ico' /><h2 style={{color: 'black', whiteSpace: 'nowrap', margin: 0, padding: 0}}>{(hour % 12) === 0 ? 12 + ":" : (hour % 12) + ":"}{minute < 10 ? "0" + minute : minute} {hour > 12 ? "PM" : "AM"}</h2>
+                    <div title='Toggle Mute Site' onClick={() => muteSite()} style={{cursor: 'url(/images/cursor/pointer.cur), auto', backgroundColor: '#C0C7C8', border: 'inset 2px', display: 'flex', alignItems: 'center', height: '25px', gap: '10px', gridColumn: '5'}}>
+                        <img alt='decor' id='sitemute' width={'15px'} height={'15px'} style={{marginLeft: '5px'}} src='/images/winicon/220.ico' />
+                        <h2 style={{color: 'black', whiteSpace: 'nowrap', margin: 0, padding: 0}}>{(hour % 12) === 0 ? 12 + ":" : (hour % 12) + ":"}{minute < 10 ? "0" + minute : minute} {hour > 12 ? "PM" : "AM"}</h2>
                     </div>
                 </div>
             </div>

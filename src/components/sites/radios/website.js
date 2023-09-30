@@ -27,7 +27,7 @@ const Website = ({number}) => {
             <hr style={{width: '80%', height: '1px'}}/>
             <div className='radio'>
                 {radioload ? 
-                <MusicPlayer/>
+                <MusicPlayer radionum={0}/>
                 : <p>Loading...</p>}
             </div>
             <div style={{height: '600px', marginTop: '50px'}}>

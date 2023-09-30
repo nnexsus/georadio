@@ -43,7 +43,7 @@ const LiquidElectrum = ({number, addbar}) => {
                 <div className='navmenu-liquidelectrum' style={{gridColumn: 2, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <div className='radio'>
                         {radioload ?
-                            <MusicPlayer/>
+                            <MusicPlayer radionum={6}/>
                         : null}
                     </div>
                 </div>
