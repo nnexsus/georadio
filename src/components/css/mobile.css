@@ -6,11 +6,6 @@
     display: none;
 }
 
-.mobilehide {
-    display: none;
-}
-
-
 .home-grid {
     display: grid; 
     grid-template-columns: 20% 40% 35%; 
@@ -73,9 +68,13 @@
     .App {
         display: none;
     }
-    
+
     .MobileApp {
         display: block;
+    }
+
+    .mobilehide {
+        display: none;
     }
 
     .home-grid {
