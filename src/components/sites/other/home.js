@@ -11,15 +11,15 @@ const Home = ({number}) => {
 
     return (
         <div id="http://home.com/" style={{width: '100%', background: `url(/images/homebg.webp)`, backgroundSize: 'cover', imageRendering: 'pixelated', padding: '10px', height: '800px'}}>
-            <div style={{display: 'grid', gridTemplateColumns: '20% 40% 35%', gridTemplateRows: '200px 160px 400px', gap: '5px', padding: '10px', marginRight: '20px', background: '#007f00', border: 'outset 3px'}} className='home-1'>
+            <div className='home-grid'>
 
-                <div style={{gridColumn: 1, gridRow: 1}}>
+                <div className='mobilehide' style={{gridColumn: 1, gridRow: 1}}>
                     <img alt='icon' src='/radiopixel.png' style={{imageRendering: 'pixelated', maxWidth: '145px', border: 'inset 3px'}} width={'100%'} />
                 </div>
 
                 <div style={{gridColumn: 'span 2', gridRow: 1, margin: '10px'}} className='home-2'>
                     <div style={{display: 'flex'}}>
-                        <img style={{imageRendering: 'pixelated'}} alt='new' src='/images/new.gif' width={'48px'}/>
+                        <img style={{imageRendering: 'pixelated'}} alt='new' src='/images/new.gif' width={'48px'} height={'22px'} />
                         <h4 style={{background: 'red'}}>New!! Update 2 is here!! 2 new radios, 6 new sites, and much more!! <a style={{cursor: "url(/images/cursor/pointer.cur), auto", color: 'blue', textDecoration: 'underline'}} href={`#scrollto-${number}`} onClick={() => clickLink('//changelog')} >Changelog</a></h4>
                     </div>
                     <div>
@@ -30,7 +30,7 @@ const Home = ({number}) => {
                 </div>
 
                 <div style={{gridColumn: 'span 3', gridRow: 2,  width: '100%'}}>
-                    <div style={{display: 'grid', gridTemplateColumns: 'repeat(5, 20%)', border: 'inset 3px', width: '100%', background: 'black', padding: '3px'}}>
+                    <div className='radio-grid' style={{display: 'grid', border: 'inset 3px', width: '100%', background: 'black', padding: '3px'}}>
                         <h2>Radio Links:</h2>
                         <a style={{cursor: "url(/images/cursor/pointer.cur), auto", display: 'flex', alignItems: 'center', border: 'solid green 2px', margin: '3px', background: 'url(/images/home/georadio.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} href={`#scrollto-${number}`} onClick={() => clickLink('http://www.geomusic.net/')}>
                             <p style={{background: 'rgba(0, 0, 0, 0.5)'}}>Breakcore</p><img alt='updated' style={{imageRendering: 'pixelated'}} src='/images/home/update.gif' width={'48px'}/>
@@ -38,7 +38,7 @@ const Home = ({number}) => {
                         <a style={{cursor: "url(/images/cursor/pointer.cur), auto", display: 'flex', alignItems: 'center', border: 'solid green 2px', margin: '3px', background: 'url(/images/home/nightcity.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} href={`#scrollto-${number}`} onClick={() => clickLink('http://www.nightcity.net/')}>
                             <p style={{background: 'rgba(0, 0, 0, 0.5)'}}>Cyberpunk</p><img alt='updated' style={{imageRendering: 'pixelated'}} src='/images/home/update.gif' width={'48px'}/>
                         </a>
-                        <a style={{cursor: "url(/images/cursor/pointer.cur), auto", display: 'flex', alignItems: 'center', border: 'solid green 2px', margin: '3px', background: 'url(/images/home/channelf.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} href={`#scrollto-${number}`} onClick={() => clickLink('http://www.channelf.co/')}>
+                        <a style={{cursor: "url(/images/cursor/pointer.cur), auto", display: 'flex', alignItems: 'center', border: 'solid green 2px', margin: '3px', background: 'url(/images/home/channelf.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} href={`#scrollto-${number}`} onClick={() => clickLink('http://www.channelf.co/radio')}>
                             <p style={{background: 'rgba(0, 0, 0, 0.5)'}}>Rap</p><img alt='updated' style={{imageRendering: 'pixelated'}} src='/images/home/update.gif' width={'48px'}/>
                         </a>
                         <a style={{cursor: "url(/images/cursor/pointer.cur), auto", display: 'flex', alignItems: 'center', border: 'solid green 2px', margin: '3px', background: 'url(/images/home/neonsunrise.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}} href={`#scrollto-${number}`} onClick={() => clickLink('http://www.neonsunrise.tl/')}>
@@ -56,8 +56,8 @@ const Home = ({number}) => {
                     </div>
                 </div>
 
-                <div style={{gridColumn: 2, gridRow: 3, display: 'flex', alignItems: 'flex-start'}}>
-                    <img alt='decor' src='/images/sunrise/surfacefull.webp' width={'100%'} style={{imageRendering: 'pixelated', border: 'inset 3px', background: 'black', padding: '3px', maxWidth: '423px'}} />
+                <div className='mobilehide' style={{gridColumn: 2, gridRow: 3, display: 'flex', alignItems: 'flex-start'}}>
+                    <img className='mobilehide' alt='decor' src='/images/sunrise/surfacefull.webp' width={'100%'} style={{imageRendering: 'pixelated', border: 'inset 3px', background: 'black', padding: '3px', maxWidth: '423px'}} />
                 </div>
                 <div style={{border: 'inset 3px', gridRow: 3, gridColumn: 3, background: 'black', padding: '3px'}}>
                     <h2>My Links:</h2>
@@ -69,7 +69,7 @@ const Home = ({number}) => {
                         <a href='https://trello.com/c/6YBXnLYP/'><p>Trello</p></a>
                     </div>
                     <hr/>
-                    <div style={{padding: '10px', background: 'black'}}>
+                    <div className='mobilehide' style={{padding: '10px', background: 'black'}}>
                         <h2 style={{margin: '0', padding: '0 5px', float: 'left'}}>Site Links:</h2>
                         <p style={{textIndent: '10px'}}>If the mouse appears like this: <a href={`#scrollto-${number}`}>(hover me)</a>, then it directs outside the site. If the mouse appears like this: 
                         <a href={`#scrollto-${number}`} style={{cursor: "url(/images/cursor/pointer.cur), auto"}}>(hover me)</a> then it directs in-site.</p>

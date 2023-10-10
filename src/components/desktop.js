@@ -9,8 +9,6 @@ import Settings from './apps/settings';
 
 import backgrounds from './json/settings.json';
 
-import './desktopStyles.css';
-import './css/mobile.css';
 import ContextMenu from './apps/contextmenu';
 
 const BrowserWrapper = ({number}) => {

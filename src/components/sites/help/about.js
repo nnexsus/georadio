@@ -34,7 +34,7 @@ const Help4 = () => {
                     <h3>Common Sites:</h3>
                     <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.geomusic.net/')}>http://www.geomusic.net/</p>
                     <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.nightcity.net/')}>http://www.nightcity.net/</p>
-                    <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.channelf.co/')}>http://www.channelf.co/</p>
+                    <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.channelf.co/radio')}>http://www.channelf.co/radio</p>
                 </div>
                 </div>
             </div>

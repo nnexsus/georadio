@@ -1,5 +1,58 @@
 michaelsoft binbows
 
+10/10/23 [
+    Mobile use overhaul (ver 1.2.2).
+
+```diff
++ Added a new mobile interface for devices, which should make using the site on small devices possible.
+
++ Fixed a backend issue that caused the hidden radio (Radio-8) to be stuck on the first song permenantly.
+
++ A few design and minor bug fixes.
+```
+
+I haven't redone the Channel-F forums site just yet, I may end up shifting towards something else with that.
+]
+
+10/1/23 [
+    Hotfix 3 (ver 1.2.1).
+
+```diff
+MAJOR:
++ The bug that would cause a radio to get stuck and loop on a song has been fixed.
+
++ The bug that would jump backward song ID's - replaying a song just played - has been fixed.
+
++ The system for connecting to a radio has been changed to allow it on multiple browsers. -- Yes, that is correct. You can now connect to as many radios at once as you want. Please don't DDOS me LOL.
+
++ Clicking on a link will now only scroll to the top of the page on the active browser, not just the first one or all of them.
+
++ The Mute Site button on the taskbar (very bottom right) is now functional.
+
++ The bug that would disconnect you from the radio if you listened to the final song has been fixed.
+
++ The classname for the fake adspace on the casino site has been changed due to adblocker flags.
+
++ The LAST SONG: text actually shows the last song now.
+
++ The site content pack on a hidden site link is functional again.
+
++ The navigate back and foward buttons are now browser specific.
+
+MINOR:
++ The bug that would round up the minute counter if seconds was over 50 has been fixed.
+
++ The bug that would prevent the header 0 from appearing in the song length has been fixed.
+
++ Various filebars that would stretch the entirety of its div have been scaled back down.
+
++ The WinPlay3 filebar options now appear on top of the content below it again.
+
++ Help sites (in the browser filebar) were not visible on github! They are now.
+```
+]
+
+
 9/29/23
 [
     --Version 1.2 [LIQUID_ELECTRUM]

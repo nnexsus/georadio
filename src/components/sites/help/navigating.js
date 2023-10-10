@@ -32,9 +32,9 @@ const Help1 = () => {
                 <hr style={{width: '65%', height: '1px'}}/>
                 <div style={{padding: '20px', backgroundColor: 'rgba(0,0,0,0.3)'}}>
                     <h3>Common Sites:</h3>
-                    <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.channelf.co/')}>http://www.channelf.co/</p>
                     <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.geomusic.net/')}>http://www.geomusic.net/</p>
                     <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.nightcity.net/')}>http://www.nightcity.net/</p>
+                    <p style={{cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => clickLink('http://www.channelf.co/radio')}>http://www.channelf.co/radio</p>
                 </div>
                 </div>
             </div>

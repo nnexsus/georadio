@@ -31,7 +31,7 @@ const NeonSunrise = ({number}) => {
                 <p style={{color: '#42fcb5', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Update!! ETERNAL_SUMMER Radio has gone from 137 to 167 songs!! Enjoy!!::.</p>
             </div>
             <hr style={{width: '65%', height: '1px'}}/>
-            <div className='radio' style={{display: 'grid', gridTemplateColumns: '15% 70% 15%', border: 'solid 30px', borderImageSource: 'url(/images/sunrise/sun.gif)', borderImageRepeat: 'repeat', borderImageSlice: '20 0'}}>
+            <div className='radio sunrise-grid'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ?
                         <MusicPlayer radionum={3}/>

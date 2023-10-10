@@ -33,7 +33,7 @@ const NeonSunset = ({number}) => {
                 </fieldset>
             </div>
             <hr style={{width: '65%', height: '1px'}}/>
-            <div className='radio' style={{display: 'grid', gridTemplateColumns: '15% 70% 15%', border: 'solid 30px', borderImageSource: 'url(/images/sunrise/star.gif)', borderImageRepeat: 'repeat', borderImageSlice: '20 0'}}>
+            <div className='radio sunset-grid'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ?
                         <MusicPlayer radionum={4}/>

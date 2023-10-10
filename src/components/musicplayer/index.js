@@ -294,17 +294,21 @@ const MusicPlayer = ({radionum}) => {
                     </div>
                     <hr className='audio-open radio-toggle' style={{width: '100%', height: '1px', gridColumn: 'span 2'}}/>
                     <div style={{gridColumn: 'span 2'}}>
-                        <div className='audio-open radio-toggle' style={{alignItems: 'center', border: "outset 3px"}}>
-                            <button className='play-button indent player-button' onClick={() => play()}>
-                                <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>▶</p>
+                        <div className='audio-open buttons-container radio-toggle' style={{alignItems: 'center', border: "outset 3px"}}>
+                            <div style={{display: 'flex'}}>
+                                <button className='play-button indent player-button' onClick={() => play()}>
+                                    <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>▶</p>
+                                    </button>
+                                <button className='pause-button player-button' onClick={() => pause()}>
+                                    <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>■</p>
                                 </button>
-                            <button className='pause-button player-button' onClick={() => pause()}>
-                                <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>■</p>
-                            </button>
-                            <button style={{display: 'flex', alignItems: 'center', border: 'outset 3px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => mute()}>
-                                <img alt='mute button' id='mute' src='/images/Mute volume.ico' style={{width: "25px", height: "20px", textAlign: 'center', margin: "0"}}/>
-                            </button>
-                            <input style={{marginLeft: '5px'}} className='slider' type={'range'} max="100" onChange={(e) => setVolume(e.currentTarget.value / 100)}/>
+                            </div>
+                            <div style={{display: 'flex'}}>                                
+                                <button style={{display: 'flex', alignItems: 'center', border: 'outset 3px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => mute()}>
+                                    <img alt='mute button' id='mute' src='/images/Mute volume.ico' style={{width: "25px", height: "20px", textAlign: 'center', margin: "0"}}/>
+                                </button>
+                                <input style={{marginLeft: '5px'}} className='slider' type={'range'} max="100" onChange={(e) => setVolume(e.currentTarget.value / 100)}/>
+                            </div>
                         </div>
                     </div>
                 </div>

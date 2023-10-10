@@ -29,7 +29,7 @@ const Cyberpunk = ({number}) => {
                 <p style={{color: '#00F9FB', textShadow: '0 0 5px #00F9FB', fontFamily: 'serif', margin: '0 20px'}}>The city that never sleeps --streaming 24/7 cyberpunk to your browser. Powered by YouTube's infinite engine of music.</p>
             </div>
             <hr style={{width: '65%', height: '1px'}}/>
-            <div className='radio' style={{display: 'grid', gridTemplateColumns: '150px 70% 150px'}}>
+            <div className='radio cyberpunk-radio'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ? 
                         <MusicPlayer radionum={1}/>
@@ -45,7 +45,7 @@ const Cyberpunk = ({number}) => {
                     <a href={`#scrollto-${number}`} style={{width: '80%', height: '43px', cursor: "url(/images/cursor/pointer.cur), auto"}}><img alt='clickable ad decor' title='http://www.moemoe.jp/' onClick={() => clickLink('http://moemoe.jp/home')} src='/images/moemoejp/banner_princess02.gif' width='100%' height='43px' style={{imageRendering: 'pixelated'}}/></a>
                 </div>
             <hr style={{width: '85%', height: '1px'}}/>
-            <div style={{height: '1070px', marginTop: '50px', display: 'grid', gridTemplateColumns: 'repeat(4, 25%)', gridTemplateRows: 'repeat(2, 300px)'}}>
+            <div className='cyberpunk-footer'>
                 <div style={{gridRow: 1, gridColumn: 1}}>
                     <img alt='decor' width={'100%'} src='/images/nightcity/neon.gif'/>
                     <img alt='decor' width={'100%'} height='75px' src='/images/nightcity/Neon_Welcome.gif' style={{mixBlendMode: 'screen'}}/>
