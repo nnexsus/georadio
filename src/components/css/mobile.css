@@ -1,6 +1,7 @@
 .App {
     display: block;
 }
+
 .MobileApp {
     display: none;
 }
@@ -72,6 +73,7 @@
     .App {
         display: none;
     }
+    
     .MobileApp {
         display: block;
     }

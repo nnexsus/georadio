@@ -8,12 +8,16 @@ import './components/css/mobile.css';
 function App() {
   return (
     <LinkProvider>
+    {
+      window.innerWidth >= 550 ? 
       <div className="App">
         <Desktop/>
       </div>
+      :
       <div className="MobileApp">
         <BrowserNoRND number={0}/> 
       </div>
+    }
     </LinkProvider>
   );
 }
