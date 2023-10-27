@@ -45,7 +45,7 @@ const ChannelF = ({number, addbar}) => {
                         </div>
                         <hr style={{width: '80%', height: '5px'}}/>
                         {radioload ?
-                        <MusicPlayer radionum={2}/>
+                        <MusicPlayer radionum={2} number={number}/>
                         : <p>Loading...</p>}
                     </div>
                 </div>

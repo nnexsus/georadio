@@ -1,18 +1,18 @@
-import axios from 'axios';
 import { useState, useEffect, useRef, useContext } from 'react';
+import { saveAs } from 'file-saver';
+import axios from 'axios';
 
 import { LinkContext } from './../systems/context';
 
 import './player.css';
-import { saveAs } from 'file-saver';
 
 const radios = ['georadio', 'nightcity', 'channelf', 'neonsunrise', 'neonsunset', 'moemoejp', 'liquidelectrum', 'eyeofthestorm']
 
-const MusicPlayer = ({radionum}) => {
+const MusicPlayer = ({radionum, number}) => {
 
-    const [state, dispatch] = useContext(LinkContext);
+    const [state, dispatch] = useContext(LinkContext); //fuck this, annotating everything. im sick of this looping bug
 
-    const [song, setSong] = useState({
+    const [song, setSong] = useState({ //current song metadata
         currentSong: '',
         song: {
             name: 'Loading...',
@@ -24,7 +24,7 @@ const MusicPlayer = ({radionum}) => {
         }
     })
 
-    const [data, setData] = useState({
+    const [data, setData] = useState({ //radio player data for visual components
         duration: 0,
         playing: false,
         volume: 0.65,
@@ -32,7 +32,7 @@ const MusicPlayer = ({radionum}) => {
         currentID: 1
     })
 
-    const [songNext, setSongNext] = useState({
+    const [songNext, setSongNext] = useState({ //preloaded song metadata
         currentSong: '',
         song: {
             name: 'Loading...',
@@ -44,7 +44,7 @@ const MusicPlayer = ({radionum}) => {
         }
     })
 
-    const [nextData, setNextData] = useState({
+    const [nextData, setNextData] = useState({ //preloaded visual data
         duration: 0,
         playing: false,
         volume: 0.65,
@@ -52,29 +52,31 @@ const MusicPlayer = ({radionum}) => {
         currentID: 1
     })
 
-    const [lastSong, setLastSong] = useState("This is the first song you've listened to. Welcome to the stream!")
-    const [nextSong, setNextSong] = useState(null)
+    const [lastSong, setLastSong] = useState("This is the first song you've listened to. Welcome to the stream!") //self explanatory
+    const [nextSong, setNextSong] = useState(null) //song filedata
 
-    const [timestamp, setTimestamp] = useState('0:00')
-    const [volume, setVolume] = useState(0.65)
+    const [timestamp, setTimestamp] = useState('0:00') //stupid react moment timestamp to update the text
+    const [volume, setVolume] = useState(0.65) //self explanatory
 
-    const audioRef = useRef()
+    const audioRef = useRef() //ref to audio player
 
-    const next = () => {
-        setLastSong(`${song.song.artist[0].toString()} - ${song.song.name.toString()}`)
-        setData({
+    const next = () => { //function that runs when the audio ref current song reaches its end
+        setLastSong(`${song.song.artist[0].toString()} - ${song.song.name.toString()}`) //last song text
+        setData({ //visual components reset or something? idk actually but i imagine its needed
             playing: data.playing,
             volume: data.volume,
             muted: data.muted,
-            currentID: data.currentID + 1
+            currentID: data.currentID
         })
-        playNextSong()
-        setSong(songNext)
-        setData(nextData)
-        setTimeout(() => {
-            preload(song.song.id + 1)
-        }, 1000)
+        playNextSong() //sets audio from current song to preloaded, no metadata changes
+        setSong(songNext) //sets metadata to preloaded
+        setData(nextData) //sets visual metadata to preloaded
     }
+
+    useEffect(() => {
+        console.log(song.song.id + " " + (song.song.id + 1))
+        preload(song.song.id + 1) //preloads next song, backend reads this ID and increments it automatically
+    }, [song])
 
     const playNextSong = () => {
         audioRef.current.src = nextSong;
@@ -90,10 +92,10 @@ const MusicPlayer = ({radionum}) => {
         })
         audioRef.current.muted = data.muted;
         const img = audioRef.current.muted === false ? '/images/Volume.ico' : '/images/Mute volume.ico'
-        document.getElementById('mute').src = img
+        document.getElementById(`mute-${number}`).src = img
     }
 
-    const newSong = async () => {
+    const newSong = async () => { //gets a newsong, only run the very first time an in-site-radio loads
         var currId = 0
         await axios.get(`https://arina.lol/api/geomusic/curr/${radionum}`, {responseType: 'blob'}).then((res) => {
             if (res.status === 404) {
@@ -127,7 +129,7 @@ const MusicPlayer = ({radionum}) => {
                     length: res.data.metastat.durrNum,
                     link: res.data.metastat.title,
                     imgLink: res.data.metastat.picture,
-                    id: res.data.metastat.track
+                    id: res.data.syncNum
                 }
             })
             audioRef.current.currentTime = res.data.currSec;
@@ -136,8 +138,9 @@ const MusicPlayer = ({radionum}) => {
         return currId
     }
 
-    const preload = async (currId) => {
-        await axios.get(`https://arina.lol/api/geomusic/currnext/${radionum}/${currId}`, {responseType: 'blob'}).then((res) => {
+    const preload = (currId) => {
+        console.log(currId)
+        axios.get(`https://arina.lol/api/geomusic/currnext/${radionum}/${currId}`, {responseType: 'blob'}).then((res) => {
             if (res.status === 404) {
                 return dispatch({type: 'update_error', error: true, errorMsg: 'Cannot connect to server! Check uptime on nnexsus.net'})
             }
@@ -146,30 +149,31 @@ const MusicPlayer = ({radionum}) => {
             }
             var blob = new Blob([res.data], { type: 'audio/mp3' });
             var url = window.URL.createObjectURL(blob)
-            setNextSong(url)
-        })
-        await axios.get(`https://arina.lol/api/geomusic/syncnext/${radionum}/${currId}`).then((res) => {
-            if (res.status === 404) {
-                return dispatch({type: 'update_error', error: true, errorMsg: 'Cannot connect to server! Check uptime on nnexsus.net'})
-            }
-            if (res.status > 220) {
-                return dispatch({type: 'update_error', error: true, errorMsg: 'Unable to get info for next song! (geo-syncnext-err)'})
-            }
-            setNextData({
-                playing: data.playing,
-                muted: false,
-                currentID: res.data.syncNum
-            })
-            setSongNext({
-                currentSong: 'a',
-                song: {
-                    name: res.data.metastat.title,
-                    artist: res.data.metastat.artist,
-                    length: res.data.metastat.durrNum,
-                    link: res.data.metastat.title,
-                    imgLink: res.data.metastat.picture,
-                    id: res.data.metastat.track
+            setNextSong(url) //store next song file data
+
+            axios.get(`https://arina.lol/api/geomusic/syncnext/${radionum}/${currId}`).then((res) => {
+                if (res.status === 404) {
+                    return dispatch({type: 'update_error', error: true, errorMsg: 'Cannot connect to server! Check uptime on nnexsus.net'})
                 }
+                if (res.status > 220) {
+                    return dispatch({type: 'update_error', error: true, errorMsg: 'Unable to get info for next song! (geo-syncnext-err)'})
+                }
+                setNextData({
+                    playing: data.playing,
+                    muted: false,
+                    currentID: res.data.syncNum
+                })
+                setSongNext({
+                    currentSong: 'a',
+                    song: {
+                        name: res.data.metastat.title,
+                        artist: res.data.metastat.artist,
+                        length: res.data.metastat.durrNum,
+                        link: res.data.metastat.title,
+                        imgLink: res.data.metastat.picture,
+                        id: res.data.syncNum
+                    }
+                })
             })
         })
     }
@@ -186,17 +190,17 @@ const MusicPlayer = ({radionum}) => {
         document.querySelector('.pause-button').classList.add('indent')
     }
   
-    useEffect(() => {
+    useEffect(() => { //update volume for audio ref on change
       audioRef.current.volume = volume
     }, [volume])
 
-    useEffect(() => {
+    useEffect(() => { //inital in-site-site load, start 
         audioRef.current.muted = false
         setTimeout(async () => {
             const img = audioRef.current.muted === false ? '/images/Volume.ico' : '/images/Mute volume.ico'
-            document.getElementById('mute').src = img
+            document.getElementById(`mute-${number}`).src = img
             var currId = await newSong()
-            await preload(currId + 1)
+            //preload(currId)
         }, 1000)
     }, [])
 
@@ -241,29 +245,29 @@ const MusicPlayer = ({radionum}) => {
                         <h4 className='title' style={{marginLeft: '2px'}}>WinPlay3</h4>
                     </div>
                     <div className='buttons' style={{marginRight: '1px'}}>
-                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: "url(/images/cursor/pointer.cur), auto"}} disabled="true"><p onClick={() => hidePlayer()} style={{margin: 0, color: 'black'}}>X</p></button>
-                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: "url(/images/cursor/pointer.cur), auto"}} disabled="true"><p onClick={() => hidePlayer()} style={{margin: 0, color: 'black'}}>◻</p></button>
-                        <button style={{float: 'right', height: '20px', backgroundColor: '#C0C7C8', margin: '0 1px', cursor: "url(/images/cursor/pointer.cur), auto"}} disabled="true"><p onClick={() => hidePlayer()} style={{margin: 0, color: 'black'}}>_</p></button>
+                        <button onClick={() => hidePlayer()} className='top-button X'><img alt='x' src='/images/winicon/X.png'/></button>
+                        <button onClick={() => hidePlayer()} className='top-button m'><img alt='x' src='/images/winicon/Maximize.png'/></button>
+                        <button onClick={() => hidePlayer()} className='top-button m'><img alt='x' src='/images/winicon/Minimize.png'/></button>
                     </div>
                 </div>
-                <div onMouseLeave={() => hideDrops()} className='file-bar audio-open radio-toggle' style={{width: '25%', marginLeft: '20px', height: '25px', alignItems: 'flex-start', borderBottom: 'black solid 1px'}}>
-                    <div className='radio-files' style={{zIndex: 10, gridTemplateColumns: '100%', padding: '0', cursor: "url(/images/cursor/pointer.cur), auto"}}>
-                        <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}><u>F</u>ile</p>
+                <div onMouseLeave={() => hideDrops()} className='file-bar audio-open radio-toggle' style={{width: '25%', marginLeft: '20px', height: '25px', alignItems: 'flex-start'}}>
+                    <div className='radio-files' style={{zIndex: 10, gridTemplateColumns: '100%', padding: '0'}}>
+                        <p onClick={() => showDrops()} style={{margin: 0}}><u>F</u>ile</p>
                         <div className='radio-hidemenu radio-dropmenu'>
                             <p onClick={() => window.open(`https://www.youtube.com/results?search_query=${song.song.name} ${song.song.artist}`)} className='radio-file'>Find Song</p>
-                            <p onClick={() => saveAs(`https://arina.lol/api/geomusic/curr/${radionum}`)} className='radio-file'>Download</p>
+                            <p onClick={() => saveAs(`https://arina.lol/api/geomusic/test/curr/${radionum}`)} className='radio-file'>Download</p>
                         </div>
                     </div>
-                    <div className='radio-options' style={{zIndex: 10, cursor: "url(/images/cursor/pointer.cur), auto"}}>
-                        <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}><u>O</u>ptions</p>
+                    <div className='radio-options' style={{zIndex: 10}}>
+                        <p onClick={() => showDrops()} style={{margin: 0}}><u>O</u>ptions</p>
                         <div className='radio-hidemenu radio-dropmenu'>
                             <p onClick={() => play()} className='radio-option'>Play</p>
                             <p onClick={() => pause()} className='radio-option'>Pause</p>
                             <p onClick={() => mute()} className='radio-option'>Mute</p>
                         </div>
                     </div>
-                    <div className='radio-helps' style={{zIndex: 10, cursor: "url(/images/cursor/pointer.cur), auto"}}>
-                        <p onClick={() => showDrops()} style={{margin: 0, color: 'black'}}><u>H</u>elp</p>
+                    <div className='radio-helps' style={{zIndex: 10}}>
+                        <p onClick={() => showDrops()} style={{margin: 0}}><u>H</u>elp</p>
                         <div className='radio-hidemenu radio-dropmenu'>
                             <p onClick={() => clickLink('//help/listening/')} className='radio-help'>Listening</p>
                             <p onClick={() => clickLink('//help/listening/')} className='radio-help'>Playlist</p>
@@ -287,7 +291,7 @@ const MusicPlayer = ({radionum}) => {
                     </div>
                     <div>
                         <div className='i-button'>
-                            <button  onClick={() => hidePlayer()} style={{display: 'flex', alignItems: 'center', border: 'solid black 1px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}}>
+                            <button  onClick={() => hidePlayer()} style={{display: 'flex', alignItems: 'center', border: 'none', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}}>
                                 <p style={{width: "25px", height: "20px", textAlign: 'center', margin: "0", color: 'black'}}>i</p>
                             </button>
                         </div>
@@ -305,9 +309,9 @@ const MusicPlayer = ({radionum}) => {
                             </div>
                             <div style={{display: 'flex'}}>                                
                                 <button style={{display: 'flex', alignItems: 'center', border: 'outset 3px', backgroundImage: "url(/images/button.png)", backgroundSize: 'contain', cursor: "url(/images/cursor/pointer.cur), auto"}} onClick={() => mute()}>
-                                    <img alt='mute button' id='mute' src='/images/Mute volume.ico' style={{width: "25px", height: "20px", textAlign: 'center', margin: "0"}}/>
+                                    <img alt='mute button' id={`mute-${number}`} src='/images/Mute volume.ico' style={{width: "25px", height: "20px", textAlign: 'center', margin: "0"}}/>
                                 </button>
-                                <input style={{marginLeft: '5px'}} className='slider' type={'range'} max="100" onChange={(e) => setVolume(e.currentTarget.value / 100)}/>
+                                <input style={{marginLeft: '5px', width: '100%'}} className='slider' type={'range'} max="100" onChange={(e) => setVolume(e.currentTarget.value / 100)}/>
                             </div>
                         </div>
                     </div>

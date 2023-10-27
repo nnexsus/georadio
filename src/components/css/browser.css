@@ -40,9 +40,10 @@
     cursor: url('../../../public/images/cursor/arrow.cur'), auto;
     width: 100%;
     height: 100%;
+    margin-right: 8px;
 }
 
-.files p, .edits p, .views p, .favorites p, .helps p, .favs p, .radio-files p, .radio-option:hover p, .radio-helps p {
+.files p, .edits p, .views p, .favorites p, .helps p, .favs p, .radio-files p, .radio-options p, .radio-helps p {
     color: black;
 }
 

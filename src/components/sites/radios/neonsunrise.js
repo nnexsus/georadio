@@ -34,7 +34,7 @@ const NeonSunrise = ({number}) => {
             <div className='radio sunrise-grid'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ?
-                        <MusicPlayer radionum={3}/>
+                        <MusicPlayer radionum={3} number={number}/>
                     : null}
                 </div>
             </div>

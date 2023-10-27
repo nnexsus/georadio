@@ -1,5 +1,23 @@
 michaelsoft binbows
 
+10/27/23 [
+    Design & various patches (ver 1.2.3).
+
+```diff
+MAJOR:
++ Fixed a bug that caused track IDs or name to display wrong.
+
++ Fixed a bug related to the track IDs that would cause the radio to have a chance to loop the 2nd song twice.
+
++ Fixed a bug where muting a radio when mutliple browsers had radio players loaded would cause the volume toggle button to only update on the first browser you opened.
+
+MINOR:
++ Fixed an issue with the volume slider not adjusting its width and the volume it changed correctly when the browser width is very small.
+
++ Fixed several design issues / improved designs for some minor things.
+```
+]
+
 10/10/23 [
     Mobile use overhaul (ver 1.2.2).
 
@@ -60,6 +78,9 @@ MINOR:
 Background Code: nightsdawn
 Thank you for actually checking the changelog!
 
+```diff
+Added:
+
 + Added MoeMoeJP (moe) and Liquid.Electrum (liquid, dnb, ufk, etc) radios and sites!!
 
 + Browser framework rework! Infinite browsers can now be open at once to improve navigation and use!
@@ -76,7 +97,8 @@ Thank you for actually checking the changelog!
 
 + Error popup! If there's any issues connecting to my server, or if something just goes wrong, it'll let you know!
 
->> Every Radio playlist and associated site has been updated!
+Changed:
++ Every Radio playlist and associated site has been updated!
 Song Count:
     GeoMusic (Breakcore) 84 -> 98
     NightCity (Cyberpunk) 50 -> 81
@@ -86,28 +108,29 @@ Song Count:
     + NEW: MoeMoeJP (Moe) 37
     + NEW: Liquid.Electrum (LDnB) 85
 
->> Improved Notepad and Taskbar! Notepad is no longer just a draggable window, and the Taskbar no longer looks awful and has some useful links and features!
++ Improved Notepad and Taskbar! Notepad is no longer just a draggable window, and the Taskbar no longer looks awful and has some useful links and features!
 
->> Window priority: the window you click on will always appear on top when active, now, instead of having to move windows to view others.
++ Window priority: the window you click on will always appear on top when active, now, instead of having to move windows to view others.
 
->> Window smoothing: windows no longer snap to a grid when dragging or resizing, its completely free now.
++ Window smoothing: windows no longer snap to a grid when dragging or resizing, its completely free now.
 
->> Mail in your Inbox app now saves to localStorage. The amount of mail you can recieve and the discoverability for mailing lists has vastly increased.
++ Mail in your Inbox app now saves to localStorage. The amount of mail you can recieve and the discoverability for mailing lists has vastly increased.
 
->> Nav back/forwards buttons finally kinda work! They will actually navigate a site back now.
++ Nav back/forwards buttons finally kinda work! They will actually navigate a site back now.
 
->> Fixes to navigation with buttons and links occasionally just not working on the first few clicks.
++ Fixes to navigation with buttons and links occasionally just not working on the first few clicks.
 
->> Brand new icon and theming for the Home page!
++ Brand new icon and theming for the Home page!
 
->> Various fixes to the radio UI, including the major issue of songnames being cutoff if they were too long (scrolling text), and proper loading text has been added.
++ Various fixes to the radio UI, including the major issue of songnames being cutoff if they were too long (scrolling text), and proper loading text has been added.
 
->> A fucking insane amount of micro-polish that really ties the theme together fully. The actual desktop and browser and such are likely in the final design stage.
++ A fucking insane amount of micro-polish that really ties the theme together fully. The actual desktop and browser and such are likely in the final design stage.
 
->> Several old sites have been updated to improve designs, theming, or to have new content!
++ Several old sites have been updated to improve designs, theming, or to have new content!
 
->> Fixed the issue with the visit site tracker not setting the cookie on my site (nnexsus.net), making the visited panels panel impossible.
++ Fixed the issue with the visit site tracker not setting the cookie on my site (nnexsus.net), making the visited panels panel impossible.
 
+Removed:
 - Removed several unusable Desktop apps, except for Recycle Bin cause it looks nice.
 
 - Removed a single hidden site (no one was finding it anyways, it was wayyy too difficult).
@@ -117,18 +140,24 @@ Song Count:
 - Removed functionality for a few browser buttons. Some just didn't make sense or were not worth the effort to uphold with the new framework.
 
 - Removed the ChannelF-Forums site. I wasn't very happy with it, and it used a completely seperate site to load. It will likely come back in the future.
+```
+
 
 FUTURE PLANS:
-    More sites (of course).
-    Greater interactivity within sites (more than just text or picture walls).
-    User-submitted sites and radios (Project: 2023 contest coming).
-    A bit more desktop functionality.
+```ini
+    [More sites (of course).]
+    [Greater interactivity within sites (more than just text or picture walls).]
+    [User-submitted sites and radios (Project: 2023 contest coming).]
+    [A bit more desktop functionality.]
+```
 ]
 
 
-3/26/23
-[
+3/26/23 [
 --Version 1.1! [NEON_SUNRISE]
+
+```diff
+Added:
 
 + Added NeonSunrise (Future Funk) and NeonSunset (CityPop) Radios!!
 
@@ -146,38 +175,37 @@ FUTURE PLANS:
 
 + Added several more sites, blogs, and hidden sites to explore!
 
->> Optimized site and radio load speed.
+Changed:
 
->> Optimized backend significantly, no longer crashes on failures.
++ Optimized site and radio load speed.
 
->> Fixed issues with song title/artist not appearing, still working on album covers.
++ Optimized backend significantly, no longer crashes on failures.
 
->> Fixed MANY design issues, especially on nightcity.net and the base site itself.
++ Fixed issues with song title/artist not appearing, still working on album covers.
 
->> Fixed and changed A LOT of different text on sites, some was cringe/wrong.
++ Fixed MANY design issues, especially on nightcity.net and the base site itself.
 
->> Updated Icons for NEON_SUNRISE update!
++ Fixed and changed A LOT of different text on sites, some was cringe/wrong.
 
->> New cursors!
++ Updated Icons for NEON_SUNRISE update!
+
++ New cursors!
+
+Removed:
 
 - Removed a few pointless sites, and media that came along with it.
 
 - No functionality to the Inbox buttons or tabs (yet?).
-]
+```
 
-Heres some plans for next update patch (which should be soon):
-[
-
-Finish functionality for buttons and tabs
-
-3ish more sites
-
-More emails
-
-Better Start Menu
-
-Landing page on Internet Explorer (with a link hub and stuff)
-
-Secret stuff hehe
+Heres some plans for next update patch (which should be soon) 
+```ini
+[Finish functionality for buttons and tabs]
+[3ish more sites]
+[More emails]
+[Better Start Menu]
+[Landing page on Internet Explorer (with a link hub and stuff)]
+[Secret stuff hehe]
+```
 
 ]

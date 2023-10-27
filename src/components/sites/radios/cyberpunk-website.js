@@ -32,7 +32,7 @@ const Cyberpunk = ({number}) => {
             <div className='radio cyberpunk-radio'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ? 
-                        <MusicPlayer radionum={1}/>
+                        <MusicPlayer radionum={1} number={number}/>
                     : null}
                 </div>
             </div>
