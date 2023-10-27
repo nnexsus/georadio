@@ -14,6 +14,8 @@ MAJOR:
 MINOR:
 + Fixed an issue with the volume slider not adjusting its width and the volume it changed correctly when the browser width is very small.
 
++ Fixed an issue where the mobile was just a little too large, so you'd have to scroll a very annoying 15px on each side.
+
 + Fixed several design issues / improved designs for some minor things.
 ```
 ]

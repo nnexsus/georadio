@@ -113,7 +113,7 @@ const BrowserNoRND = ({number}) => {
     }, [state.newsite])
 
     return (
-        <div className='browser-window isactive' style={{backgroundColor: "#C0C7C8", cursor: 'url(/images/cursor/move.cur), auto', borderStyle: 'solid', borderWidth: '3px', padding: '2px', borderRightColor: 'black', borderBottomColor: 'black', borderTopColor: '#FFF8FF', borderLeftColor: '#FFF8FF', width: '100%', height: '100vh'}}>
+        <div className='browser-window isactive' style={{backgroundColor: "#C0C7C8", cursor: 'url(/images/cursor/move.cur), auto', width: '100%', height: '100vh'}}>
                 <div onContextMenu={(e) => contextMenu(e)} style={{display: 'grid', gridTemplateColumns: '90% 10%', gridTemplateRows: '25px 21px 3px 17px 40px 27px', overflow: 'hidden'}}>
                     <div className='top-bar active-toggle-bar' style={{gridColumn: 'span 2', width: '100%', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <div style={{display: 'flex', alignItems: 'center'}}>
