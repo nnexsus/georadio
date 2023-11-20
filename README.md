@@ -1,7 +1,7 @@
 michaelsoft binbows
 
-??/??/23 {
-    --Version 1.3 []
+11/19/23 {
+    --Version 1.3 [CORTEX_DRIVER]
     Background Code: 1year
 
 ```diff
@@ -38,7 +38,7 @@ Song Count:
     + NEW: Golden Breeze (Chill, Trap, Elec) 38
     + NEW: Late Nite Swim (Introspective) 31
     + NEW: ZYZZ APRROVED (Hardstyle) 30
-    + NEW: Hallowed Grounds () idk yet, playlist over 24 hours have to trim
+    + NEW: Hallowed Grounds (24 Hour Playlist) 379
 ```
 
 }
