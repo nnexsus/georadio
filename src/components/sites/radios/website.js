@@ -22,12 +22,12 @@ const Website = ({number}) => {
             <div className='opener' style={{textAlign: 'center'}}>
                 <h1 style={{color: 'rgb(255, 0, 153)', fontFamily: 'serif'}}>Welcome to GeoMusic v2</h1>
                 <hr style={{width: '80%', height: '1px'}}/>
-                <p style={{color: 'rgb(51, 255, 204)', fontFamily: 'serif', margin: '0 20px'}}>Streaming 24/7 radio to your browser. Powered by YouTube's infinite engine of music. Over --- breakcore, deep dnb, and other songs.</p>
+                <p style={{color: 'rgb(51, 255, 204)', fontFamily: 'serif', margin: '0 20px'}}>Streaming 24/7 radio to your browser. Powered by YouTube's infinite engine of music. Over 100 breakcore, deep dnb, and other songs.</p>
             </div>
             <hr style={{width: '80%', height: '1px'}}/>
             <div className='radio'>
                 {radioload ? 
-                <MusicPlayer radionum={0} number={number}/>
+                <MusicPlayer radionum={0} number={number} themeid={0}/>
                 : <p>Loading...</p>}
             </div>
             <div style={{height: '600px', marginTop: '50px'}}>
@@ -36,7 +36,7 @@ const Website = ({number}) => {
                 <div style={{display: 'flex', flexDirection: 'column', textAlign: 'left', alignItems: 'center'}}>
                     <img width={'40px'} height={'20px'} alt='decor' src='/images/geomusic/new.gif' />
                     <h3 style={{color: 'lightblue', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '0 20px'}}>New:</h3>
-                    <p style={{color: 'rgb(51, 255, 204)', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '0 20px', textIndent: '50px'}}>GeoMusic just underwent update 2, which added 14 songs to the playlist. Bringing it to a total of 98 songs.</p>
+                    <p style={{color: 'rgb(51, 255, 204)', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '0 20px', textIndent: '50px'}}>GeoMusic just underwent update 3, which added ----- songs to the playlist.</p>
                 </div>
                 <hr style={{width: '80%', height: '1px'}}/>
                 <div style={{display: 'flex', textAlign: 'right'}}>

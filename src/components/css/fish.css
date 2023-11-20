@@ -1,0 +1,24 @@
+.fish-div {
+    background-color: #030a0e; 
+    background-image: url(/public/images/user/screenspacereflection/lamp.png);
+    background-size: 100%; 
+    background-repeat: no-repeat; 
+    width: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    box-shadow: 0 0 20px 0 black inset;
+
+    cursor: url('../../../public/images/cursor/cyber.png') 16 16, auto;
+}
+
+.fish-link {
+    cursor: url('../../../public/images/cursor/cyber-pointer.png') 16 16, auto;
+}
+
+.fish-div-lower p {
+    color: red;
+}
+
+.fish-div-lower a {
+    color: darkblue;
+}

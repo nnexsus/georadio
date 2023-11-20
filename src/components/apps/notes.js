@@ -35,10 +35,10 @@ background key: industrial
             bounds={"#desktop"}
             minHeight={288}
             minWidth={512}
-            style={{backgroundColor: "#C0C7C8", borderStyle: 'solid', borderWidth: '3px', padding: '2px', borderRightColor: 'black', borderBottomColor: 'black', borderTopColor: '#FFF8FF', borderLeftColor: '#FFF8FF'}}>
+            style={{backgroundColor: "#C0C7C8", borderStyle: 'solid', borderWidth: '3px', padding: '2px', borderRightColor: 'black', borderBottomColor: 'black', borderTopColor: '#FFF8FF', borderLeftColor: '#FFF8FF', outline: 'black solid 1px', outlineOffset: '-1px'}}>
                 <div className='top-bar active-toggle-bar' style={{width: '100%', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
-                        <img alt='decor' style={{marginLeft: '5px'}} width="22px" height="22px" src='/images/Notepad writing.ico'/>
+                        <img alt='decor' style={{marginLeft: '5px'}} width="22px" height="22px" src='/images/winicon/Notepad writing.ico'/>
                         <h4 className='title active-toggle-text' style={{marginLeft: '2px'}}>Notes</h4>
                     </div>
                     <div className='buttons content' style={{marginRight: '1px'}}>
@@ -57,7 +57,7 @@ background key: industrial
                 <hr/>
                 <div className='content' style={{padding: '20px', height: 'calc(100% - 50px)'}}>
                     <div style={{height: 'inherit', overflow: 'scroll'}}>
-                        <textarea value={note} onChange={(e) => saveNote(e.currentTarget.value)} style={{width: '100%', height: 'calc(100% - 69px)'}}>
+                        <textarea value={note} onChange={(e) => saveNote(e.currentTarget.value)} style={{width: '100%', height: '100%', resize: 'none'}}>
                         </textarea>
                     </div>
                 </div>

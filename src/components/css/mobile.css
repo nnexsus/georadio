@@ -8,17 +8,36 @@
 
 .home-grid {
     display: grid; 
-    grid-template-columns: 20% 40% 35%; 
-    grid-template-rows: 200px 160px 400px; 
+    grid-template-columns: 20% 60% 20%;
     gap: 5px; 
     padding: 10px; 
-    margin-right: 20px; 
-    background: #007f00; 
+    background: darkslategray;
     border: outset 3px;
+    height: calc(100% - 25px);
+}
+
+.home-grid p {
+    text-align: center;
+}
+
+.home-2 {
+    grid-column: 1; 
+    background: rgba(0,0,0,0.5); 
+    padding: 3px; 
+    border: inset 3px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
 }
 
 .radio-grid {
-    grid-template-columns: repeat(5, 20%);
+    grid-template-columns: 33% calc(34% - 3px) calc(33% - 3px);
+    gap: 3px
+}
+
+.user-radio-grid {
+    grid-template-columns: 20% calc(20% - 3px) calc(20% - 3px) calc(20% - 3px) calc(20% - 3px);
+    gap: 3px
 }
 
 .cyberpunk-radio {
@@ -27,11 +46,9 @@
 }
 
 .cyberpunk-footer {
-    height: 1070px;
     margin-top: 50px;
     display: grid;
-    grid-template-columns: repeat(4, 25%); 
-    grid-template-rows: repeat(2, 300px);
+    grid-template-columns: repeat(3, 30%) 10%; 
 }
 
 .channelf-albums {
@@ -64,6 +81,42 @@
     border-image-slice: 20 0;
 }
 
+.golden-breeze-upper {
+    height: 100%;
+}
+
+.golden-breeze-lower {
+    margin-top: 0;
+}
+
+.cortex-driver-lower {
+    display: block;
+}
+
+.mobileshow {
+    display: none;
+}
+
+.home-grid-container {
+    margin-right: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+@container homegrid (max-width: 580px) {
+    .home-grid-container {
+        overflow-x: scroll;
+    }
+
+    .home-grid-container::-webkit-scrollbar {
+        height: 15px;
+    }
+
+    .home-grid {
+        width: 550px;
+    }
+}
+
 @media screen and (max-width: 550px) {
     .App {
         display: none;
@@ -77,14 +130,19 @@
         display: none;
     }
 
+    .mobileshow {
+        display: block;
+    }
+
     .home-grid {
         display: flex;
         overflow-x: scroll;
         overflow-y: hidden;
+        height: fit-content;
     }
 
-    .radio-grid {
-        grid-template-columns: 100%;
+    .radio-grid, .user-radio-grid {
+        grid-template-columns: 50% calc(50% - 3px);
     }
 
     .audio-open.buttons-container {
@@ -110,5 +168,27 @@
     .sunrise-grid, .sunset-grid {
         display: block;
         border: solid orange 3px;
+    }
+
+    .golden-breeze-upper {
+        height: auto;
+    }
+
+    .golden-breeze-lower {
+        margin-top: 150px;
+    }
+
+    .cortex-driver-lower {
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+
+    .fish-mobile {
+        scale: 0.73;
+    }
+
+    .moemoe-mobile {
+        height: 580px;
     }
 }

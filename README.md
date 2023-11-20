@@ -1,5 +1,49 @@
 michaelsoft binbows
 
+??/??/23 {
+    --Version 1.3 []
+    Background Code: 1year
+
+```diff
+Added:
++ New Cortex Driver (hard electronic, hypercore) and Golden Breeze (chill trap, electronic) Radios!
+
++ New 'Late Nite Swim', 'ZYZZ', and 'Hallowed Grounds' user submitted radios!
+
++ Shuffle Button! Since the Radio backend rewrite, songs are now in order per their playlist. Shuffle will desync you from the active stream with replay protection!
+
++ WinPlay4! The WinPlay3 Radio player design has been updated significantly to fit the content and to allow stylization between sites.
+
++ ForumsHost site! Navigate to 'http://forumshost.com/' on the in-site browser to submit ideas for a custom radio anytime!
+
++ Firefox and other browser design support.
+
+Changed:
++ Sitechanger Rework! The sitechanger, which swapped the actual site components based on the addbar, has been changed to make it possible for an infinite amount of sites to be added. 
+
++ Homescreen 3.0, the 'Home' page/site has been reworked again to make navigation between all the radios and sites much easier.
+
++ A genuinely insane amount of design fixes and improvements, likely more than any other update, or previous combined.
+
++ Every Radio playlist and associated site has been updated!
+Song Count:
+    GeoMusic (Breakcore) 98 -> 102?
+    NightCity (Cyberpunk) 81 -> 92
+    ChannelF (KB&R&EXO) -> 112 -> 140
+    Neon_Sunrise (Future Funk) 167 -> 168
+    Neon_Sunset (Citypop) 104 -> 107
+    MoeMoeJP (Moe) 37 -> 47
+    Liquid.Electrum (LDnB) 85 -> 92
+    + NEW: Cortex Driver (DB, HardElec, Hyper) 37
+    + NEW: Golden Breeze (Chill, Trap, Elec) 38
+    + NEW: Late Nite Swim (Introspective) 31
+    + NEW: ZYZZ APRROVED (Hardstyle) 30
+    + NEW: Hallowed Grounds () idk yet, playlist over 24 hours have to trim
+```
+
+}
+
+
 10/27/23 [
     Design & various patches (ver 1.2.3).
 

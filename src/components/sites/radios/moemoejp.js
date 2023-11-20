@@ -30,15 +30,15 @@ const MoeMoeJP = ({number, addbar}) => {
     }, [])
 
     return (
-        <div id='http://moemoe.jp/' style={{width: '100%', backgroundImage: `url(/images/moemoejp/pa12.gif)`, backgroundSize: '70px', imageRendering: 'pixelated', marginTop: '-11px'}}>
+        <div id='http://moemoe.jp/' className='moemoe-mobile' style={{width: '100%', backgroundImage: `url(/images/moemoejp/pa12.gif)`, backgroundSize: '70px', imageRendering: 'pixelated', marginTop: '-11px'}}>
             <div style={{display: 'grid', gridTemplateColumns: '20% 80%', gridTemplateRows: '100px 475px', margin: '0 10%'}}>
                 <div className='navmenu-moemoejp' style={{gridColumn: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '30px'}}>
                     <p style={{whiteSpace: 'nowrap', color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0', WebkitTextStroke: '0.5px #E4C1F9'}}>»»——⍟——««</p>
-                    <img src='/images/moemoejp/pink-up.gif' style={{height: '30px', width: '80px'}} />
-                    <button title="/home" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/home')}><img src='/images/moemoejp/home-op.gif' /></button>
-                    <button title="/about" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/about')}><img src='/images/moemoejp/about-op.gif' /></button>
-                    <button title="/mail" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/mail')}><img src='/images/moemoejp/mail-op.gif' /></button>
-                    <button title="/friend" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/friend')}><img src='/images/moemoejp/friend-op.gif' /></button>
+                    <img src='/images/moemoejp/pink-up.gif' alt='decor' style={{height: '30px', width: '80px'}} />
+                    <button title="/home" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/home')}><img alt='home page with radio' src='/images/moemoejp/home-op.gif' /></button>
+                    <button title="/about" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/about')}><img alt='about page' src='/images/moemoejp/about-op.gif' /></button>
+                    <button title="/mail" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/mail')}><img alt='mail page' src='/images/moemoejp/mail-op.gif' /></button>
+                    <button title="/friend" className='moemoenav' onClick={() => clickLink('http://moemoe.jp/friend')}><img alt='friend page' src='/images/moemoejp/friend-op.gif' /></button>
                     <img src='/images/moemoejp/pink-up3.gif' style={{height: '20px', width: '80px'}} />
                     <p style={{whiteSpace: 'nowrap', color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0', WebkitTextStroke: '0.5px #E4C1F9'}}>»»——⍟——««</p>
                 </div>
@@ -99,9 +99,10 @@ const MoeMoeJP = ({number, addbar}) => {
             </div>
             <div className='navmenu-moemoejp' style={{gridColumn: 2, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <h2 style={{color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0', WebkitTextStroke: '0.5px #E4C1F9'}}>｡☆✼★━━━━━━━━━━━━★✼☆｡</h2>
+                <h3 style={{color: '#FF99C8', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0', WebkitTextStroke: '0.5px #E4C1F9', background: '#D0F4DE'}}>UPDATE!! NEW SONG COUNT: 47!!</h3>
                 <div className='radio' style={{backgroundColor: '#E4C1F9', border: 'solid black 2px', borderRadius: '30px'}}>
                     {radioload ?
-                        <MusicPlayer radionum={5} number={number}/>
+                        <MusicPlayer radionum={5} number={number} themeid={5}/>
                     : null}
                 </div>
             </div>

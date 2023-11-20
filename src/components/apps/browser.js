@@ -8,7 +8,7 @@ import '../css/browser.css';
 const Browser = ({number}) => {
 
     const [favBar, setFavBar] = useState('')
-    const [addBar, setAddBar] = useState('http://www.home.com/');
+    const [addBar, setAddBar] = useState('Home');
     const [state, dispatch] = useContext(LinkContext);
 
     const onClick = () => {
@@ -94,6 +94,7 @@ const Browser = ({number}) => {
     }
 
     const navback = () => {
+        console.log(sessionStorage.getItem(`lastsite-${number}`))
         setAddBar(`${sessionStorage.getItem(`lastsite-${number}`)}`)
         document.querySelectorAll('.forward-button').forEach((el) => {
             el.classList.toggle('disabled')
@@ -141,7 +142,8 @@ const Browser = ({number}) => {
             minHeight={288}
             minWidth={512}
             className='browser-window'
-            style={{backgroundColor: "#C0C7C8", cursor: 'url(/images/cursor/move.cur), auto', borderStyle: 'solid', borderWidth: '3px', padding: '2px', borderRightColor: 'black', borderBottomColor: 'black', borderTopColor: '#FFF8FF', borderLeftColor: '#FFF8FF'}}>
+            style={{backgroundColor: "#C0C7C8", cursor: 'url(/images/cursor/move.cur), auto', borderStyle: 'solid', borderWidth: '3px', padding: '2px', 
+            borderRightColor: 'black', borderBottomColor: 'black', borderTopColor: '#FFF8FF', borderLeftColor: '#FFF8FF', outline: 'black solid 1px', outlineOffset: '-1px'}}>
                 <div onContextMenu={(e) => contextMenu(e)} style={{display: 'grid', gridTemplateColumns: '90% 10%', gridTemplateRows: '25px 21px 3px 17px 40px 27px', overflow: 'hidden'}}>
                     <div className='top-bar active-toggle-bar' style={{gridColumn: 'span 2', width: '100%', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <div style={{display: 'flex', alignItems: 'center'}}>
@@ -162,15 +164,15 @@ const Browser = ({number}) => {
                         <a className='back-a' href={`#scrollto-${number}`}><button onClick={() => navback()} title='Forward' className='button-on-bar forward-button disabled' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/arrowr-lit.png' width={'20px'} height={'20px'}/></button></a>
                         <button title='Unload' className='button-on-bar'><img alt='decor' onClick={() => setAddBar('')} src='images/winicon/explorer/Shred.png' width={'20px'} height={'20px'}/></button>
                         <button title='Refresh' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Refresh.png' width={'20px'} height={'20px'}/></button>
-                        <button title='New Folder' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/New folder.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Copy to Folder' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Copy to Folder.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Upscale Text' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/upsize.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Downscale Text' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/downsize.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Cut' className='button-on-bar'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Cut.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Copy' className='button-on-bar'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Copy.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Copy to Clipboard' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Paste.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Favorite' className='button-on-bar'><img alt='decor' onClick={() => updateFavorite(addBar, 1)} src='images/winicon/Earth Rating Document.ico' width={'20px'} height={'20px'}/></button>
-                        <button title='Remove Favorite' className='button-on-bar'><img alt='decor' onClick={() => updateFavorite(addBar, 0)} src='images/winicon/Cross.ico' width={'20px'} height={'20px'}/></button>
+                        <button title='New Folder' className='button-on-bar mobilehide'><img alt='decor' src='images/winicon/explorer/New folder.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Copy to Folder' className='button-on-bar mobilehide' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Copy to Folder.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Upscale Text' className='button-on-bar mobilehide'><img alt='decor' src='images/winicon/explorer/upsize.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Downscale Text' className='button-on-bar mobilehide' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/downsize.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Cut' className='button-on-bar mobilehide'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Cut.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Copy' className='button-on-bar mobilehide'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Copy.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Copy to Clipboard' className='button-on-bar mobilehide' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Paste.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Favorite' className='button-on-bar mobilehide'><img alt='decor' onClick={() => updateFavorite(addBar, 1)} src='images/winicon/Earth Rating Document.ico' width={'20px'} height={'20px'}/></button>
+                        <button title='Remove Favorite' className='button-on-bar mobilehide'><img alt='decor' onClick={() => updateFavorite(addBar, 0)} src='images/winicon/Cross.ico' width={'20px'} height={'20px'}/></button>
                     </div>
                     <div className='address-bar content' style={{width: '100%', height: '25px', display: 'flex', alignItems: 'center', borderTop: '1px solid black', borderBottom: '1px solid black', gridColumn: 1}}>
                         <p style={{color: 'black', marginRight: '3px', fontSize: '14px', marginLeft: '5px',}}>Address:</p>
@@ -225,12 +227,13 @@ const Browser = ({number}) => {
                             <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/listening/')} className='help'>Listening</p></a>
                             <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/apps/')} className='help'>Apps</p></a>
                             <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('http://www.home.com/')} className='help'>Home</p></a>
+                            <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/contact')} className='help'>Contact</p></a>
                             </div>
                         </button>
                     </div>
                     <hr style={{height: '1px', width: '100%', gridRow: 3, margin: 0, gridColumn: 'span 2'}} />
-                    <div style={{gridColumn: 2, gridRowStart: 4, gridRowEnd: 7, aspectRatio: '1/1'}}>
-                        <img width={'100%'} height={'100%'} alt='decor' src='/logo192.png' style={{border: 'inset 3px', minHeight: '79px', maxHeight: '79px'}} />
+                    <div style={{gridColumn: 2, gridRowStart: 4, gridRowEnd: 7, background: 'black', border: 'inset 3px', maxHeight: '79px', width: '100%', backgroundImage: 'url(/logo192.png)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundColor: 'black', backgroundPosition: 'center'}}>
+                        <p style={{background: 'rgba(0,0,0,0.5)', padding: '2px', textOverflow: 'ellipsis', overflow: 'hidden', fontSize: '9px'}}>https://georadio.live/ <br/> v1.3</p>
                     </div>
                 </div>
                 <SiteChanger number={number} addbar={addBar} />

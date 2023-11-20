@@ -61,7 +61,7 @@ export const reducer = (state, action) => {
 }
 
 export const initState = {
-    link: 'http://www.home.com/', //opening page
+    link: 'Home', //opening page
     browserInt: 0,
     radio: 0, //radio number to sync to
     browser: 0, //check if any apps open

@@ -37,7 +37,7 @@ const Error = () => {
         minWidth={180}
         cancel={'.content'}
         bounds={"#desktop"}
-        style={{backgroundColor: "#C0C7C8", border: "groove 2px", cursor: 'url(/images/cursor/move.cur), auto'}}>
+        style={{backgroundColor: "#C0C7C8", border: "groove 2px", cursor: 'url(/images/cursor/move.cur), auto', outline: 'black solid 1px', outlineOffset: '-1px'}}>
             <div style={{display: 'grid', gridTemplateColumns: '100%', gridTemplateRows: '25px 6px', overflow: 'hidden'}}>
                 <div className='top-bar active-toggle-bar' style={{width: '100%', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
@@ -53,7 +53,7 @@ const Error = () => {
                 <hr style={{height: '1px', width: '100%', gridRow: 3, margin: 0}} />
             </div>
             <div style={{paddingTop: '10px', display: 'flex', alignItems: 'flex-start'}}>
-                {state.notice ? <img width={'50px'} height={'50px'} style={{imageRendering: 'pixelated'}} src="/images/winicon/warning.ico" /> : <img width={'50px'} height={'50px'} style={{imageRendering: 'pixelated'}} src="/images/winicon/Cross.ico" /> }
+                {state.notice ? <img alt='warning' width={'50px'} height={'50px'} style={{imageRendering: 'pixelated'}} src="/images/winicon/warning.ico" /> : <img alt='error' width={'50px'} height={'50px'} style={{imageRendering: 'pixelated'}} src="/images/winicon/Cross.ico" /> }
                 <p style={{color: 'black', textAlign: 'left', paddingLeft: '12px'}}>{msg}</p>
             </div>
             <audio/>

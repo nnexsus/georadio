@@ -1,0 +1,7 @@
+.zyzz-div {
+    opacity: 0.5;
+}
+
+.zyzz-div:hover {
+    opacity: 1;
+}

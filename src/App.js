@@ -1,4 +1,3 @@
-import { LinkProvider } from "./components/systems/context";
 import Desktop from "./components/desktop";
 import BrowserNoRND from "./components/systems/browsernornd";
 
@@ -7,7 +6,7 @@ import './components/css/mobile.css';
 
 function App() {
   return (
-    <LinkProvider>
+    <div>
     {
       window.innerWidth >= 550 ? 
       <div className="App">
@@ -18,7 +17,7 @@ function App() {
         <BrowserNoRND number={0}/> 
       </div>
     }
-    </LinkProvider>
+    </div>
   );
 }
 

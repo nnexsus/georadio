@@ -25,9 +25,12 @@ yarn-error.log*
 georadio.zip
 radiopixelv1-1.aseprite
 radioicons.aseprite
+palmbg.aseprite
+fishcity.aseprite
+lamp.aseprite
 
 #no peeking
-/src/components/systems/sitechanger.js
+/src/components/systems/sites.js
 /src/components/sites/help/help.js
 /src/components/sites/blogs/
 /src/components/sites/hidden/

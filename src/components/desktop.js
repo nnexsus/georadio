@@ -154,12 +154,12 @@ const Desktop = () => {
             <iframe title='cookie for visited panel on my site, thank you for visiting!!' style={{display: 'none'}} src='https://nnexsus.net/setcookie/georadio'/>
             <div onClick={(e) => contextDelete(e.target.classList)} onContextMenu={(e) => context(e)} onLoad={() => setVisit()} style={{width: "100%", height: `100vh`, backgroundColor: "teal", overflow: 'hidden', imageRendering: 'pixelated'}} id='desktop'>
                 <iframe style={{display: 'none'}} src='https://nnexsus.net/setcookie/georadio'/>
-                <div onClick={(e) => changeWindow(e.currentTarget.id)} id='desktop-click' style={{height: '80%', display: "grid", gridTemplateColumns: "repeat(10,10%)", gridTemplateRows: 'repeat(10, 10%)', minHeight: '100%', padding: '20px', gap: '30px'}} className='icons'>
+                <div onClick={(e) => changeWindow(e.currentTarget.id)} id='desktop-click' style={{height: '80%', display: "grid", gridTemplateColumns: "repeat(10,10%)", gridTemplateRows: 'repeat(10, 10%)', minHeight: '100%', padding: '20px', gap: '30px', border: 'inset 2px', borderBottom: 'none'}} className='icons'>
                     <div className='app-icon' onClick={() => openSettings()} style={{ gridColumn: '1' }}>
                         <img alt='decor' src='/images/My Computer.ico' width={'50px'} height={'44px'} style={{imageRendering: "pixelated"}}/>
                         <p>My Computer</p>
                     </div>
-                    {(new Date).getHours() >= 21 ?                 
+                    {(new Date).getHours() >= 21 ?
                         <div className='app-icon' style={{ gridColumn: '1' }}>
                             <img alt='decor' src='/images/2pcs.png' width={'50px'} height={'44px'} style={{imageRendering: "pixelated"}}/>
                             <p style={{textAlign: 'center'}}>Network Neighborhood</p>
@@ -222,10 +222,10 @@ const Desktop = () => {
                         <ContextMenu/>
                     : null}
                 </div>
-                <div className='border' style={{zIndex: 20, display: 'grid', gridTemplateColumns: '10% 70% 10%', position: 'sticky', marginTop: '-70px', backgroundColor: '#C0C7C8', border: 'ridge 3px', maxHeight: '25px'}}>
-                    <button className='taskbar-buttons starts' onMouseLeave={() => hideDrops()} onClick={() => showDrops()} style={{backgroundColor: '#C0C7C8', border: 'outset 3px', borderColor: '', display: 'flex', flexDirection: 'column-reverse', alignItems: 'flex-start', height: '25px'}}>
+                <div className='border' style={{zIndex: 20, display: 'grid', gridTemplateColumns: '10% 75% 15%', position: 'sticky', marginTop: '-72px', backgroundColor: '#C0C7C8', border: 'ridge 3px', maxHeight: '25px'}}>
+                    <button className='taskbar-buttons starts start-out app-open' onMouseLeave={() => hideDrops()} onClick={() => showDrops()} style={{backgroundColor: '#C0C7C8', display: 'flex', flexDirection: 'column-reverse', alignItems: 'flex-start', height: '25px'}}>
                         <div style={{display: 'flex', alignItems: 'center', marginBottom: '-2px'}}>
-                            <img alt='decor' style={{marginLeft: '-5px'}} width='25px' height='25px' src='/images/winicon/windows.png' /><h2 style={{color: 'black', margin: '0', marginLeft: '5px'}}>Start</h2>
+                            <img alt='decor' style={{marginLeft: '-5px'}} width='25px' height='25px' src='/images/winicon/windows.png' /><h3 style={{color: 'black', fontSize: '22px', margin: '0', marginLeft: '5px'}}>Start</h3>
                         </div>
                             <div className='start hidestart'>
                                 <div className='startmenu' style={{backgroundColor: 'lightgray', width: '250px', display: 'grid', gridTemplateColumns: '10% 90%', gridTemplateRows: 'repeat(7, 50px) 10px repeat(2, 50px)'}}>
@@ -303,7 +303,7 @@ const Desktop = () => {
                             <img style={{imageRendering: 'pixelated'}} alt='decor' width="20px" height="20px" src='/images/winicon/inbox/inbox.png'/><h2 style={{color: 'black'}}>Inbox</h2>
                         </button>
                     </div>
-                    <div title='Toggle Mute Site' onClick={() => muteSite()} style={{cursor: 'url(/images/cursor/pointer.cur), auto', backgroundColor: '#C0C7C8', border: 'inset 2px', display: 'flex', alignItems: 'center', height: '25px', gap: '10px', gridColumn: '5'}}>
+                    <div title='Toggle Mute Site' onClick={() => muteSite()} style={{cursor: 'url(/images/cursor/pointer.cur), auto', backgroundColor: '#C0C7C8', border: 'inset 2px', display: 'flex', alignItems: 'center', height: '22px', gap: '10px', gridColumn: '3'}}>
                         <img alt='decor' id='sitemute' width={'15px'} height={'15px'} style={{marginLeft: '5px'}} src='/images/winicon/220.ico' />
                         <h2 style={{color: 'black', whiteSpace: 'nowrap', margin: 0, padding: 0}}>{(hour % 12) === 0 ? 12 + ":" : (hour % 12) + ":"}{minute < 10 ? "0" + minute : minute} {hour > 12 ? "PM" : "AM"}</h2>
                     </div>

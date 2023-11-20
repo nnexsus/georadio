@@ -1,4 +1,3 @@
-
 ::-webkit-scrollbar, .curr::-webkit-scrollbar {
     height: 5px;
     width: 15px;
@@ -6,6 +5,8 @@
 
 ::-webkit-scrollbar-track, .curr::-webkit-scrollbar-track {
     background: darkgray;
+    outline: solid black 1px;
+    outline-offset: -1px;
 }
 
 ::-webkit-scrollbar-thumb, .curr::-webkit-scrollbar-thumb {
@@ -18,10 +19,17 @@
     border-top-color: #FFF8FF;
     border-left-color: #FFF8FF;
     outline: 1px black solid;
+    outline-offset: -1px;
 }
 
 ::-webkit-scrollbar-thumb:hover, .curr::-webkit-scrollbar-thumb:hover {
     background-color: darkgray;
+}
+
+::-webkit-scrollbar-corner , .curr::-webkit-scrollbar-corner {
+    background-image: url('/public/images/winicon/explorer/arrowdown.png');
+    background-color: darkgray;
+    outline: solid black 1px;
 }
 
 .hidemenu, .radio-hidemenu {
@@ -35,7 +43,7 @@
 .files, .edits, .views, .favorites, .helps, .favs, .radio-files, .radio-options, .radio-helps {
     border: none;
     padding: 0;
-    background-color: rgb(192, 199, 200);
+    background-color: transparent;
     image-rendering: pixelated;
     cursor: url('../../../public/images/cursor/arrow.cur'), auto;
     width: 100%;

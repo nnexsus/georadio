@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { Rnd } from 'react-rnd';
 import { LinkContext } from '../systems/context';
 import SiteChanger from '../systems/sitechanger';
 
@@ -8,7 +7,7 @@ import '../css/browser.css';
 const BrowserNoRND = ({number}) => {
 
     const [favBar, setFavBar] = useState('')
-    const [addBar, setAddBar] = useState('http://www.home.com/');
+    const [addBar, setAddBar] = useState('Home');
     const [state, dispatch] = useContext(LinkContext);
 
     useEffect(() => {
@@ -114,35 +113,35 @@ const BrowserNoRND = ({number}) => {
 
     return (
         <div className='browser-window isactive' style={{backgroundColor: "#C0C7C8", cursor: 'url(/images/cursor/move.cur), auto', width: '100%', height: '100vh'}}>
-                <div onContextMenu={(e) => contextMenu(e)} style={{display: 'grid', gridTemplateColumns: '90% 10%', gridTemplateRows: '25px 21px 3px 17px 40px 27px', overflow: 'hidden'}}>
+                <div onContextMenu={(e) => contextMenu(e)} style={{display: 'grid', gridTemplateColumns: '100% 0%', gridTemplateRows: '25px 21px 3px 17px 40px 27px', overflow: 'hidden'}}>
                     <div className='top-bar active-toggle-bar' style={{gridColumn: 'span 2', width: '100%', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                         <div style={{display: 'flex', alignItems: 'center'}}>
                             <img alt='decor' style={{marginLeft: '5px'}} width="22px" height="22px" src='/images/winicon/explorer/webdoc.png'/>
-                            <h4 className='active-toggle-text text-overflow' style={{marginLeft: '2px'}}>Internet Explorer - {addBar}</h4>
+                            <h4 className='active-toggle-text text-overflow' style={{marginLeft: '2px', maxWidth: 'calc(100% - 60px)'}}>Internet Explorer - {addBar}</h4>
                         </div>
                         <div className='buttons content' style={{marginRight: '1px'}}>
-                            <button className='top-button X'><img alt='x' src='/images/winicon/X.png'/></button>
-                            <button className='top-button m'><img alt='x' src='/images/winicon/Maximize.png'/></button>
-                            <button className='top-button m'><img alt='x' src='/images/winicon/Minimize.png'/></button>
+                            <button className='top-button X mobilehide'><img alt='x' src='/images/winicon/X.png'/></button>
+                            <button className='top-button m mobilehide'><img alt='x' src='/images/winicon/Maximize.png'/></button>
+                            <button className='top-button m mobilehide'><img alt='x' src='/images/winicon/Minimize.png'/></button>
                         </div>
                     </div>
 
                     <div className='buttons-bar' style={{width: '100%', height: '24px', margin: '2px 0', marginLeft: '10px', display: 'flex', alignItems: 'center', gridRow: 4}}>
-                        <button title='Open Mail' className='button-on-bar'><img alt='decor' onClick={() => dispatch({type: 'update_app', browser: state.browser, notes: state.notes, inbox: !state.inbox})} src='images/winicon/explorer/opendir.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Open Mail' className='button-on-bar mobilehide'><img alt='decor' onClick={() => dispatch({type: 'update_app', browser: state.browser, notes: state.notes, inbox: !state.inbox})} src='images/winicon/explorer/opendir.png' width={'20px'} height={'20px'}/></button>
                         <a className='back-a' href={`#scrollto-${number}`}><button title='Home' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' onClick={() => setBar('http://home.com/')} src='images/winicon/explorer/Home.png' width={'20px'} height={'20px'}/></button></a>
                         <a className='back-a' href={`#scrollto-${number}`}><button onClick={() => navback()} title='Back' id='back-button' className='button-on-bar forward-button'><img alt='decor' src='images/winicon/explorer/arrowl-lit.png' width={'20px'} height={'20px'}/></button></a>
                         <a className='back-a' href={`#scrollto-${number}`}><button onClick={() => navback()} title='Forward' className='button-on-bar forward-button disabled' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/arrowr-lit.png' width={'20px'} height={'20px'}/></button></a>
                         <button title='Unload' className='button-on-bar'><img alt='decor' onClick={() => setAddBar('')} src='images/winicon/explorer/Shred.png' width={'20px'} height={'20px'}/></button>
                         <button title='Refresh' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Refresh.png' width={'20px'} height={'20px'}/></button>
-                        <button title='New Folder' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/New folder.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Copy to Folder' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Copy to Folder.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Upscale Text' className='button-on-bar'><img alt='decor' src='images/winicon/explorer/upsize.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Downscale Text' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/downsize.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Cut' className='button-on-bar'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Cut.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Copy' className='button-on-bar'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Copy.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Copy to Clipboard' className='button-on-bar' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Paste.png' width={'20px'} height={'20px'}/></button>
-                        <button title='Favorite' className='button-on-bar'><img alt='decor' onClick={() => updateFavorite(addBar, 1)} src='images/winicon/Earth Rating Document.ico' width={'20px'} height={'20px'}/></button>
-                        <button title='Remove Favorite' className='button-on-bar'><img alt='decor' onClick={() => updateFavorite(addBar, 0)} src='images/winicon/Cross.ico' width={'20px'} height={'20px'}/></button>
+                        <button title='New Folder' className='button-on-bar mobilehide'><img alt='decor' src='images/winicon/explorer/New folder.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Copy to Folder' className='button-on-bar mobilehide' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Copy to Folder.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Upscale Text' className='button-on-bar mobilehide'><img alt='decor' src='images/winicon/explorer/upsize.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Downscale Text' className='button-on-bar mobilehide' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/downsize.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Cut' className='button-on-bar mobilehide'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Cut.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Copy' className='button-on-bar mobilehide'><img alt='decor' onClick={() => navigator.clipboard.writeText(addBar)} src='images/winicon/explorer/Copy.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Copy to Clipboard' className='button-on-bar mobilehide' style={{marginRight: '10px'}}><img alt='decor' src='images/winicon/explorer/Paste.png' width={'20px'} height={'20px'}/></button>
+                        <button title='Favorite' className='button-on-bar mobilehide'><img alt='decor' onClick={() => updateFavorite(addBar, 1)} src='images/winicon/Earth Rating Document.ico' width={'20px'} height={'20px'}/></button>
+                        <button title='Remove Favorite' className='button-on-bar mobilehide'><img alt='decor' onClick={() => updateFavorite(addBar, 0)} src='images/winicon/Cross.ico' width={'20px'} height={'20px'}/></button>
                     </div>
                     <div className='address-bar content' style={{width: '100%', height: '25px', display: 'flex', alignItems: 'center', borderTop: '1px solid black', borderBottom: '1px solid black', gridColumn: 1}}>
                         <p style={{color: 'black', marginRight: '3px', fontSize: '14px', marginLeft: '5px',}}>Address:</p>
@@ -197,6 +196,7 @@ const BrowserNoRND = ({number}) => {
                             <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/listening/')} className='help'>Listening</p></a>
                             <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/apps/')} className='help'>Apps</p></a>
                             <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('http://www.home.com/')} className='help'>Home</p></a>
+                            <a className='back-a' href={`#scrollto-${number}`}><p onClick={() => setAddBar('//help/contact')} className='help'>Contact</p></a>
                             </div>
                         </button>
                     </div>

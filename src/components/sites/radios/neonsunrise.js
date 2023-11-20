@@ -28,13 +28,13 @@ const NeonSunrise = ({number}) => {
                 <img alt='decor' src='/images/sunrise/neoarule.gif' width={'40%'} />
                 <p style={{color: '#42fcb5', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Home of the ETERNAL_SUMMER Radio --streaming 24/7 future funk to your browser. Powered by YouTube's infinite engine of music::.</p>
                 <img src='/images/sunrise/neu.gif' width={'50px'} alt='decor new' height={'25px'} />
-                <p style={{color: '#42fcb5', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Update!! ETERNAL_SUMMER Radio has gone from 137 to 167 songs!! Enjoy!!::.</p>
+                <p style={{color: '#42fcb5', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Update!! ETERNAL_SUMMER Radio is now at 168 songs!! Enjoy!!::.</p>
             </div>
             <hr style={{width: '65%', height: '1px'}}/>
             <div className='radio sunrise-grid'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ?
-                        <MusicPlayer radionum={3} number={number}/>
+                        <MusicPlayer radionum={3} number={number} themeid={3}/>
                     : null}
                 </div>
             </div>

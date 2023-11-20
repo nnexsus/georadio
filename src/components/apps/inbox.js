@@ -46,7 +46,7 @@ const Inbox = () => {
         bounds={"#desktop"}
         minHeight={288}
         minWidth={512}
-        style={{backgroundColor: "#C0C7C8", border: "groove 2px", cursor: 'url(/images/cursor/move.cur), auto'}}
+        style={{backgroundColor: "#C0C7C8", border: "groove 2px", cursor: 'url(/images/cursor/move.cur), auto', outline: 'black solid 1px', outlineOffset: '-1px', borderStyle: 'solid', borderWidth: '3px', padding: '2px', borderRightColor: 'black', borderBottomColor: 'black', borderTopColor: '#FFF8FF', borderLeftColor: '#FFF8FF'}}
         className='inboxblack appwindow'>
 
         <div style={{display: 'grid', gridTemplateColumns: '100%', gridTemplateRows: '25px 26px 3px 32px', overflow: 'hidden'}}>

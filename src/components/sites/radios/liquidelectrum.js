@@ -27,8 +27,8 @@ const LiquidElectrum = ({number, addbar}) => {
         <div id='http://liquidelectrum.co/' style={{width: '100%', backgroundImage: `url(/images/liquidelectrum/bg.gif)`, backgroundSize: '70px', imageRendering: 'pixelated'}}>
             <div style={{display: 'flex', flexDirection: 'column', padding: '15%', boxShadow: '0 0 5px 5px #38B000 inset'}}>
                 <div className='navmenu-liquidelectrum' style={{display: 'flex', alignItems: 'center'}}>
-                    <button title="/main" className='liquidnav' onClick={() => clickLink('http://liquidelectrum.co/main')}><img src='/images/liquidelectrum/homegreen.gif'/></button>
-                    <button title="/about" className='liquidnav' onClick={() => clickLink('http://liquidelectrum.co/about')}><img src='/images/liquidelectrum/AniGreenArrowBack.gif' /></button>
+                    <button title="/main" className='liquidnav' onClick={() => clickLink('http://liquidelectrum.co/main')}><img alt='main page' src='/images/liquidelectrum/homegreen.gif'/></button>
+                    <button title="/about" className='liquidnav' onClick={() => clickLink('http://liquidelectrum.co/about')}><img alt='about page' src='/images/liquidelectrum/AniGreenArrowBack.gif' /></button>
                 </div>
         {addbar.includes("/main") ?
         <div className='navmenu-liquidelectrum' style={{gridColumn: 2, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -36,14 +36,15 @@ const LiquidElectrum = ({number, addbar}) => {
                 <h2 style={{color: '#38B000', fontFamily: 'serif', textShadow: '0 0 5px #CCFF33', marginBottom: '0', WebkitTextStroke: '0.5px #CCFF33'}}>Liquid.Electrum</h2>
                 <p style={{color: '#CCFF33', fontFamily: 'serif', textShadow: '0 0 5px #A9DEF9', marginBottom: '0'}}>welcome to Liquid.Electrum
                         <br/>
-                        <br/>24.07 liquid dnb, ufk, electronic radio. over 85 nonstop songs
+                        <br/>24.07 liquid dnb, ufk, electronic radio.
+                        <br/>now at 92 songs.
                 </p>
                 <a target='_blank' rel='noreferrer' href='https://www.youtube.com/playlist?list=PLzhN8a1aNzMxvkEt1IpTbRLDI7WfqisjU'><p style={{color: 'blue', textDecoration: 'underline'}}>YOUTUBE PLAYLIST</p></a>
 
                 <div className='navmenu-liquidelectrum' style={{gridColumn: 2, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <div className='radio'>
                         {radioload ?
-                            <MusicPlayer radionum={6} number={number}/>
+                            <MusicPlayer radionum={6} number={number} themeid={6}/>
                         : null}
                     </div>
                 </div>

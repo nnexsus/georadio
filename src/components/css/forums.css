@@ -1,0 +1,11 @@
+.forums-tree p {
+    color: black;
+}
+
+.forums h1, .forums h2, .forums h3, .forums h4, .forums button, .forums textarea, .forums input, .forums a {
+    font-family: alfredo;
+}
+
+.forums textarea {
+    resize: none;
+}

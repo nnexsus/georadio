@@ -32,7 +32,7 @@ const Cyberpunk = ({number}) => {
             <div className='radio cyberpunk-radio'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ? 
-                        <MusicPlayer radionum={1} number={number}/>
+                        <MusicPlayer radionum={1} number={number} themeid={1}/>
                     : null}
                 </div>
             </div>
@@ -63,12 +63,12 @@ const Cyberpunk = ({number}) => {
                     <img alt='decor' width={'100%'} src='/images/nightcity/neon_purp_blk.gif'/>
                     <img alt='decor' width={'100%'} height='75px' src='/images/newsneon.gif' style={{mixBlendMode: 'screen'}}/>
                     <hr style={{width: '80%', height: '1px'}}/>
-                    <p style={{color: '#42fcb5', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '10px 20px', textAlign: 'left', background: 'black', padding: '10px'}}>Nightcity Radio has recently gotten an update, bringing it from 50 songs to 81 songs!! Enjoy!</p>
+                    <p style={{color: '#42fcb5', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '10px 20px', textAlign: 'left', background: 'black', padding: '10px'}}>Nightcity Radio just underwent update 3, now at 92 songs!! Enjoy!</p>
                     <hr style={{width: '80%', height: '1px'}}/>
                     <p style={{color: '#42fcb5', textShadow: '0 0 5px aqua', fontFamily: 'serif', margin: '10px 20px', textAlign: 'left', background: 'black', padding: '10px'}}>The playlist can be found here: <a href="https://www.youtube.com/playlist?list=PLzhN8a1aNzMxitzM-KZH4kDdOgfRJy5QR">Playlist</a></p>
                     <img alt='decor' width={'100%'} src='/images/nightcity/neon_purp_blk.gif'/>
                 </div>
-                <div style={{width: '100%', height: '100%', gridRow: 'span 3', gridColumn: 4, margin: '20px 10px 20px 0', boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset'}}>
+                <div style={{width: '100%', gridColumn: 4, boxShadow: '0 0 5px 5px black, 0 0 5px 5px black inset'}}>
                     <img alt='clickable ad decor' title='http://freeishslots.net/' onClick={() => clickLink('http://freeishslots.net/')} src='/images/nightcity/casino.gif' width='100%' height={'90%'} style={{imageRendering: 'pixelated', cursor: "url(/images/cursor/pointer.cur), auto"}}/>
                 </div>
             </div>

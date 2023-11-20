@@ -29,14 +29,14 @@ const NeonSunset = ({number}) => {
                     <img alt='decor' src='/images/sunrise/neoarule.gif' style={{filter: 'hue-rotate(30deg)'}} width={'60%'} />
                     <p style={{color: 'deepskyblue', textShadow: '0 0 5px white', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Home of the ETERNAL_SUMMER_NIGHT Radio --streaming 24/7 citypop to your browser. Powered by YouTube's infinite engine of music::.</p>
                     <img src='/images/sunrise/neu.gif' width={'50px'} alt='decor new' height={'25px'} />
-                    <p style={{color: 'deepskyblue', textShadow: '0 0 5px white', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Update!! ETERNAL_SUMMER_NIGHT Radio has gone from 48 to 104 songs, enjoy!!::.</p>
+                    <p style={{color: 'deepskyblue', textShadow: '0 0 5px white', fontFamily: 'serif', margin: '35px 25px', padding: '5px', background: 'rgba(0,0,0,0.3)', borderRadius: '50px'}}>.::Update!! ETERNAL_SUMMER_NIGHT Radio is now at 106 songs, enjoy!!::.</p>
                 </fieldset>
             </div>
             <hr style={{width: '65%', height: '1px'}}/>
             <div className='radio sunset-grid'>
                 <div style={{gridColumn: '2'}}>
                     {radioload ?
-                        <MusicPlayer radionum={4} number={number}/>
+                        <MusicPlayer radionum={4} number={number} themeid={4}/>
                     : null}
                 </div>
             </div>
